@@ -176,7 +176,7 @@ export default function ScrollHero() {
               marginBottom: "2.5rem",
             }}
           >
-            AI Voice Agents · Built for Service Businesses
+            AI Voice Agent · AI Marketing Agent
           </motion.span>
 
           {logoCutoutSrc && (
@@ -222,8 +222,8 @@ export default function ScrollHero() {
               marginBottom: "2.25rem",
             }}
           >
-            Every call answered. Every lead qualified. Every appointment
-            booked. 24/7.
+            We generate you more calls and ensure every one turns into a
+            booked job.
           </motion.p>
 
           <motion.a
