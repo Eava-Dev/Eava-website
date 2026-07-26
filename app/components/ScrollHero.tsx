@@ -227,7 +227,9 @@ export default function ScrollHero() {
           </motion.p>
 
           <motion.a
-            href="#features"
+            href="https://calendly.com/taylor-eavaai/30min"
+            target="_blank"
+            rel="noopener noreferrer"
             custom={3}
             initial="hidden"
             animate={ready ? "visible" : "hidden"}
