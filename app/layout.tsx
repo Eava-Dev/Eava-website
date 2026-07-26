@@ -15,7 +15,16 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Eava — AI Voice Agents for Service Businesses",
+  title: "AI VOICE AGENT · AI MARKETING AGENT",
+  openGraph: {
+    title: "AI VOICE AGENT · AI MARKETING AGENT",
+    images: ["/og-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI VOICE AGENT · AI MARKETING AGENT",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({
