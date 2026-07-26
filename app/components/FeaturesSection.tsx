@@ -32,7 +32,7 @@ const features = [
   },
   {
     title: "CRM & Calendar Integration",
-    copy: "Every call syncs straight into the tools you already run — ServiceTitan, Housecall Pro, Google Calendar — no manual data entry required.",
+    copy: "Every call syncs straight into the tools you already run — Outlook, Google Calendar, and more — no manual data entry required.",
     icon: (
       <>
         <rect x="3" y="4" width="8" height="8" rx="1" />
