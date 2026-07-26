@@ -227,9 +227,7 @@ export default function ScrollHero() {
           </motion.p>
 
           <motion.a
-            href="https://calendly.com/taylor-eavaai/30min"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#hear-eava"
             custom={3}
             initial="hidden"
             animate={ready ? "visible" : "hidden"}
@@ -250,7 +248,7 @@ export default function ScrollHero() {
               pointerEvents: "auto",
             }}
           >
-            See Eava in Action
+            Hear Eava in Action
           </motion.a>
         </div>
       </div>

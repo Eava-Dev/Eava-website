@@ -165,6 +165,7 @@ export default function HearEavaSection() {
 
   return (
     <section
+      id="hear-eava"
       style={{
         background: "#0A0B0D",
         padding: "8rem 6vw",
