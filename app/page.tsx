@@ -3,6 +3,7 @@ import FeaturesSection from "./components/FeaturesSection";
 import MarketingSection from "./components/MarketingSection";
 import HearEavaSection from "./components/HearEavaSection";
 import SpecsSection from "./components/SpecsSection";
+import PackagesSection from "./components/PackagesSection";
 import ClosingCTA from "./components/ClosingCTA";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <MarketingSection />
       <HearEavaSection />
       <SpecsSection />
+      <PackagesSection />
       <ClosingCTA />
     </main>
   );
