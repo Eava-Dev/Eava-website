@@ -5,14 +5,14 @@ import FadeIn from "./FadeIn";
 const features = [
   {
     title: "24/7 Call Answering",
-    copy: "Eava picks up every call — nights, weekends, and holidays — so a ringing phone never turns into a lost job for your HVAC, plumbing, or dental practice.",
+    copy: "Every call answered instantly, day or night, weekends and holidays included, so no lead ever goes to voicemail.",
     icon: (
       <path d="M4 5c0 8.284 6.716 15 15 15v-3.5a1.5 1.5 0 0 0-1.2-1.47l-3.2-.64a1.5 1.5 0 0 0-1.55.66l-.9 1.35a11.5 11.5 0 0 1-5.55-5.55l1.35-.9a1.5 1.5 0 0 0 .66-1.55l-.64-3.2A1.5 1.5 0 0 0 6.5 4H4Z" />
     ),
   },
   {
-    title: "Instant Lead Qualification",
-    copy: "The agent asks the right questions in real time — job type, urgency, location — so your team only follows up on calls worth their time.",
+    title: "Lead Qualification & Booking",
+    copy: "Eava asks the right questions, understands the job, and books the appointment straight into your calendar in real time.",
     icon: (
       <>
         <circle cx="12" cy="8" r="3" />
@@ -21,8 +21,8 @@ const features = [
     ),
   },
   {
-    title: "Automated Appointment Booking",
-    copy: "Eava checks live availability and books directly onto your calendar, confirming the visit with the caller before the line even hangs up.",
+    title: "Emergency Detection & Live Transfer",
+    copy: "Urgent calls are recognized instantly and can be transferred live to a real person when it matters most.",
     icon: (
       <>
         <rect x="4" y="5" width="16" height="15" rx="2" />
@@ -31,8 +31,8 @@ const features = [
     ),
   },
   {
-    title: "CRM & Calendar Integration",
-    copy: "Every call syncs straight into the tools you already run — Outlook, Google Calendar, and more — no manual data entry required.",
+    title: "Missed Call Text-Back",
+    copy: "If a call is ever missed, an automatic text goes out right away so the lead never goes cold.",
     icon: (
       <>
         <rect x="3" y="4" width="8" height="8" rx="1" />
@@ -43,8 +43,8 @@ const features = [
     ),
   },
   {
-    title: "Natural Conversational Voice",
-    copy: "Callers talk to Eava like they would a front-desk employee — no menus, no scripts that break under pressure, just a calm, capable conversation.",
+    title: "Two-Way SMS & Follow-Up",
+    copy: "Leads who'd rather text than call can book that way too, and automated follow-up sequences bring back leads who didn't convert the first time.",
     icon: (
       <>
         <path d="M12 3a4 4 0 0 1 4 4v4a4 4 0 0 1-8 0V7a4 4 0 0 1 4-4Z" />
@@ -53,8 +53,8 @@ const features = [
     ),
   },
   {
-    title: "Real-Time Call Summaries",
-    copy: "Every conversation is transcribed and summarized the moment it ends, landing in your inbox with next steps already flagged.",
+    title: "Review & Reputation Management",
+    copy: "Automated review requests after every job, plus monitoring so your reputation stays strong.",
     icon: (
       <>
         <path d="M6 3h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" />
