@@ -1,6 +1,7 @@
 import ScrollHero from "./components/ScrollHero";
 import FeaturesSection from "./components/FeaturesSection";
 import MarketingSection from "./components/MarketingSection";
+import HearEavaSection from "./components/HearEavaSection";
 import SpecsSection from "./components/SpecsSection";
 import ClosingCTA from "./components/ClosingCTA";
 
@@ -10,6 +11,7 @@ export default function Home() {
       <ScrollHero />
       <FeaturesSection />
       <MarketingSection />
+      <HearEavaSection />
       <SpecsSection />
       <ClosingCTA />
     </main>
