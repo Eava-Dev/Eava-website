@@ -242,8 +242,7 @@ export default function HearEavaSection() {
             textAlign: "center",
           }}
         >
-          Listen to real examples of how Eava handles calls across
-          different industries
+          Listen to Demo Examples of how Eava will Handle your calls
         </p>
       </FadeIn>
 
