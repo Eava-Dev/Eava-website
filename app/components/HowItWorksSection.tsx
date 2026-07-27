@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import FadeIn from "./FadeIn";
 
 const steps = [
@@ -128,55 +127,6 @@ export default function HowItWorksSection() {
           </FadeIn>
         ))}
       </div>
-
-      <FadeIn index={5}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            textAlign: "center",
-            marginTop: "5rem",
-          }}
-        >
-          <p
-            style={{
-              fontFamily: "var(--font-display)",
-              fontStyle: "italic",
-              fontWeight: 500,
-              fontSize: "clamp(1.3rem, 2.5vw, 1.75rem)",
-              color: "#E5E5E5",
-              marginBottom: "2rem",
-            }}
-          >
-            See it for yourself
-          </p>
-
-          <motion.a
-            href="https://calendly.com/taylor-eavaai/30min"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ background: "#0A0B0D", color: "#22D3EE" }}
-            style={{
-              display: "inline-block",
-              width: "fit-content",
-              background: "#22D3EE",
-              color: "#0A0B0D",
-              border: "1px solid #22D3EE",
-              fontFamily: "var(--font-inter)",
-              fontWeight: 500,
-              fontSize: "0.7rem",
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              padding: "0.9rem 2.6rem",
-              borderRadius: "2px",
-              textDecoration: "none",
-            }}
-          >
-            Book a Demo
-          </motion.a>
-        </div>
-      </FadeIn>
     </section>
   );
 }
