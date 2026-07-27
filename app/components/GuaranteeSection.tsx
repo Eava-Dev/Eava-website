@@ -72,8 +72,9 @@ export default function GuaranteeSection() {
               lineHeight: 1.6,
             }}
           >
-            If Eava ever misses a call due to a technical issue on our
-            end, you get a free month, no questions asked.
+            If a verified technical failure on Eava's end causes a call
+            to go unanswered, you get a free month of the AI Voice
+            Agent service, credited to your account.
           </p>
         </div>
       </FadeIn>
