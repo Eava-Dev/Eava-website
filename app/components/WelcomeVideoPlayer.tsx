@@ -17,6 +17,8 @@ export default function WelcomeVideoPlayer() {
         position: "relative",
         maxWidth: "760px",
         marginTop: "3.5rem",
+        marginLeft: "auto",
+        marginRight: "auto",
         border: "1px solid rgba(34,211,238,0.2)",
         borderRadius: "4px",
         overflow: "hidden",
