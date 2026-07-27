@@ -16,9 +16,27 @@ function getClientIp(req: NextRequest): string {
   return "unknown";
 }
 
+function cooldownKey(req: NextRequest): string {
+  return `eava-talk-widget-cooldown:${getClientIp(req)}`;
+}
+
+export async function GET(req: NextRequest) {
+  const key = cooldownKey(req);
+  const value = await redis.get(key);
+
+  if (value !== null) {
+    const ttl = await redis.ttl(key);
+    return NextResponse.json({
+      allowed: false,
+      retryAfterSeconds: ttl > 0 ? ttl : COOLDOWN_SECONDS,
+    });
+  }
+
+  return NextResponse.json({ allowed: true });
+}
+
 export async function POST(req: NextRequest) {
-  const ip = getClientIp(req);
-  const key = `eava-talk-widget-cooldown:${ip}`;
+  const key = cooldownKey(req);
 
   const setResult = await redis.set(key, Date.now(), {
     nx: true,

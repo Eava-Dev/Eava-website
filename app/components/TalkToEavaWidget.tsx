@@ -4,17 +4,17 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import FadeIn from "./FadeIn";
 
-type Status = "checking" | "allowed" | "cooldown";
+type Status = "checking" | "available" | "cooldown" | "claiming" | "active";
 
 export default function TalkToEavaWidget() {
   const [status, setStatus] = useState<Status>("checking");
 
   useEffect(() => {
     let cancelled = false;
-    fetch("/api/cooldown", { method: "POST" })
+    fetch("/api/cooldown", { method: "GET" })
       .then((res) => res.json())
       .then((data) => {
-        if (!cancelled) setStatus(data.allowed ? "allowed" : "cooldown");
+        if (!cancelled) setStatus(data.allowed ? "available" : "cooldown");
       })
       .catch(() => {
         if (!cancelled) setStatus("cooldown");
@@ -24,8 +24,20 @@ export default function TalkToEavaWidget() {
     };
   }, []);
 
+  const handleStartCall = () => {
+    setStatus("claiming");
+    fetch("/api/cooldown", { method: "POST" })
+      .then((res) => res.json())
+      .then((data) => {
+        setStatus(data.allowed ? "active" : "cooldown");
+      })
+      .catch(() => {
+        setStatus("cooldown");
+      });
+  };
+
   useEffect(() => {
-    if (status !== "allowed") return;
+    if (status !== "active") return;
 
     const publicKey = process.env.NEXT_PUBLIC_RETELL_VOICE_PUBLIC_KEY;
     const agentId = process.env.NEXT_PUBLIC_RETELL_VOICE_AGENT_ID;
@@ -167,12 +179,48 @@ export default function TalkToEavaWidget() {
                   fontSize: "0.95rem",
                   color: "#E5E5E5",
                   lineHeight: 1.6,
+                  marginBottom:
+                    status === "available" || status === "claiming"
+                      ? "1.5rem"
+                      : 0,
                 }}
               >
-                {status === "checking"
-                  ? "Loading…"
-                  : "Click the “Talk to Eava” button in the corner of your screen to start a live voice conversation."}
+                {status === "checking" &&
+                  "Loading…"}
+                {(status === "available" || status === "claiming") &&
+                  "Start a live voice conversation with Eava, right in your browser."}
+                {status === "active" &&
+                  "Click the “Talk to Eava” button in the corner of your screen to start a live voice conversation."}
               </p>
+              {(status === "available" || status === "claiming") && (
+                <motion.button
+                  type="button"
+                  onClick={handleStartCall}
+                  disabled={status === "claiming"}
+                  whileHover={
+                    status === "claiming"
+                      ? undefined
+                      : { background: "#0A0B0D", color: "#22D3EE" }
+                  }
+                  style={{
+                    display: "inline-block",
+                    background: "#22D3EE",
+                    color: "#0A0B0D",
+                    border: "1px solid #22D3EE",
+                    fontFamily: "var(--font-inter)",
+                    fontWeight: 500,
+                    fontSize: "0.7rem",
+                    letterSpacing: "0.18em",
+                    textTransform: "uppercase",
+                    padding: "0.9rem 2.2rem",
+                    borderRadius: "2px",
+                    cursor: status === "claiming" ? "default" : "pointer",
+                    opacity: status === "claiming" ? 0.6 : 1,
+                  }}
+                >
+                  {status === "claiming" ? "Starting…" : "Start Live Demo"}
+                </motion.button>
+              )}
             </>
           )}
         </div>
