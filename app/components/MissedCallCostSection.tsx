@@ -37,6 +37,9 @@ export default function MissedCallCostSection() {
             color: "#ffffff",
             maxWidth: "760px",
             marginBottom: "4rem",
+            marginLeft: "auto",
+            marginRight: "auto",
+            textAlign: "center",
           }}
         >
           The Cost of a Missed Call
@@ -48,6 +51,9 @@ export default function MissedCallCostSection() {
           display: "grid",
           gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
           gap: "2rem",
+          maxWidth: "760px",
+          marginLeft: "auto",
+          marginRight: "auto",
         }}
       >
         {stats.map((s, i) => (
