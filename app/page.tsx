@@ -13,12 +13,12 @@ export default function Home() {
     <main style={{ background: "#0A0B0D" }}>
       <ScrollHero />
       <MarketingSection />
+      <HowItWorksSection />
       <HearEavaSection />
       <FeaturesSection />
       <PackagesSection />
       <MissedCallCostSection />
       <GuaranteeSection />
-      <HowItWorksSection />
       <ClosingCTA />
     </main>
   );
