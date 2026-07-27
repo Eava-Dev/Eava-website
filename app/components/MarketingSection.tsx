@@ -1,6 +1,7 @@
 "use client";
 
 import FadeIn from "./FadeIn";
+import WelcomeVideoPlayer from "./WelcomeVideoPlayer";
 
 const blocks = [
   {
@@ -116,6 +117,10 @@ export default function MarketingSection() {
         >
           One partner for the calls, the leads, and the growth.
         </p>
+      </FadeIn>
+
+      <FadeIn index={6}>
+        <WelcomeVideoPlayer />
       </FadeIn>
     </section>
   );
