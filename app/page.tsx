@@ -3,6 +3,9 @@ import FeaturesSection from "./components/FeaturesSection";
 import MarketingSection from "./components/MarketingSection";
 import HearEavaSection from "./components/HearEavaSection";
 import PackagesSection from "./components/PackagesSection";
+import MissedCallCostSection from "./components/MissedCallCostSection";
+import GuaranteeSection from "./components/GuaranteeSection";
+import HowItWorksSection from "./components/HowItWorksSection";
 import ClosingCTA from "./components/ClosingCTA";
 
 export default function Home() {
@@ -13,6 +16,9 @@ export default function Home() {
       <HearEavaSection />
       <FeaturesSection />
       <PackagesSection />
+      <MissedCallCostSection />
+      <GuaranteeSection />
+      <HowItWorksSection />
       <ClosingCTA />
     </main>
   );
