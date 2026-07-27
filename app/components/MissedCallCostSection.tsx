@@ -4,16 +4,22 @@ import FadeIn from "./FadeIn";
 
 const stats = [
   {
-    number: "$45,600",
-    label: "Lost yearly to missed calls, per HVAC contractor",
+    number: "62%",
+    label: "Of small business calls go unanswered",
+    sourceText: "Source: 411 Locals, 2024",
+    sourceUrl: "https://schedulingkit.com/statistics/missed-call-statistics",
   },
   {
-    number: "74%",
-    label: "Of contractor calls go unanswered",
+    number: "85%",
+    label: "Of missed callers never call back, most call a competitor instead",
+    sourceText: "Source: Aggregated industry data",
+    sourceUrl: "https://schedulingkit.com/statistics/missed-call-statistics",
   },
   {
-    number: "$0.40",
-    label: "Cost of an AI-answered call, versus $7-12 for a human-answered one",
+    number: "$126,000",
+    label: "Average yearly revenue lost to missed calls for a small service business",
+    sourceText: "Source: ServiceTitan, BIA/Kelsey, 411 Locals, and others",
+    sourceUrl: "https://dialfyne.com/missed-call-statistics",
   },
 ];
 
@@ -81,6 +87,22 @@ export default function MissedCallCostSection() {
               >
                 {s.label}
               </p>
+              <a
+                href={s.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "block",
+                  fontFamily: "var(--font-inter)",
+                  fontWeight: 300,
+                  fontSize: "0.7rem",
+                  color: "#888888",
+                  textDecoration: "underline",
+                  marginTop: "0.85rem",
+                }}
+              >
+                {s.sourceText}
+              </a>
             </div>
           </FadeIn>
         ))}
