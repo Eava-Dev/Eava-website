@@ -10,8 +10,8 @@ export default function Home() {
   return (
     <main style={{ background: "#0A0B0D" }}>
       <ScrollHero />
-      <FeaturesSection />
       <MarketingSection />
+      <FeaturesSection />
       <HearEavaSection />
       <SpecsSection />
       <PackagesSection />
