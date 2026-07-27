@@ -49,9 +49,9 @@ export default function MissedCallCostSection() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
           gap: "1.5rem",
-          maxWidth: "760px",
+          maxWidth: "1100px",
           marginLeft: "auto",
           marginRight: "auto",
         }}
@@ -63,7 +63,7 @@ export default function MissedCallCostSection() {
                 border: "1px solid rgba(34,211,238,0.2)",
                 borderRadius: "4px",
                 background: "rgba(255,255,255,0.02)",
-                padding: "1.5rem",
+                padding: "2rem",
                 height: "100%",
               }}
             >
