@@ -176,7 +176,7 @@ export default function ScrollHero() {
               marginBottom: "2.5rem",
             }}
           >
-            Voice Agent / Growth Agent
+            Voice Agent · Growth Agent
           </motion.span>
 
           {logoCutoutSrc && (

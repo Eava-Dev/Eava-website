@@ -15,14 +15,14 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "VOICE AGENT / GROWTH AGENT",
+  title: "VOICE AGENT · GROWTH AGENT",
   openGraph: {
-    title: "VOICE AGENT / GROWTH AGENT",
+    title: "VOICE AGENT · GROWTH AGENT",
     images: ["/og-image.png"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "VOICE AGENT / GROWTH AGENT",
+    title: "VOICE AGENT · GROWTH AGENT",
     images: ["/og-image.png"],
   },
 };
