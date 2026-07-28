@@ -14,3 +14,14 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
+
+.of-input:focus,
+.of-textarea:focus {
+  outline: none;
+  border-color: #22d3ee;
+}
+
+.of-input::placeholder,
+.of-textarea::placeholder {
+  color: #666666;
+}
