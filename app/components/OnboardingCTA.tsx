@@ -8,9 +8,9 @@ export default function OnboardingCTA() {
     <div
       style={{
         background: "#0A0B0D",
-        padding: "5rem 6vw",
+        padding: "5rem 7vw",
         display: "flex",
-        justifyContent: "center",
+        justifyContent: "flex-start",
       }}
     >
       <FadeIn>
