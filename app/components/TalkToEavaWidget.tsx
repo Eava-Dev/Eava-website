@@ -69,7 +69,8 @@ export default function TalkToEavaWidget() {
         background: "#0A0B0D",
         padding: "3rem 6vw 0",
         display: "flex",
-        justifyContent: "center",
+        flexDirection: "column",
+        alignItems: "center",
       }}
     >
       <FadeIn>
@@ -225,6 +226,19 @@ export default function TalkToEavaWidget() {
           )}
         </div>
       </FadeIn>
+      <p
+        style={{
+          fontFamily: "var(--font-inter)",
+          fontWeight: 300,
+          fontSize: "0.7rem",
+          color: "#888888",
+          textAlign: "center",
+          marginTop: "0.85rem",
+        }}
+      >
+        Just a sample. Yours will be fully customized to your business, your
+        services, and your scripts.
+      </p>
     </div>
   );
 }
