@@ -12,9 +12,9 @@ export default function Home() {
   return (
     <main style={{ background: "#0A0B0D" }}>
       <ScrollHero />
-      <TalkToEavaWidget />
       <MarketingSection />
       <HowItWorksSection />
+      <TalkToEavaWidget />
       <HearEavaSection />
       <FeaturesSection />
       <PackagesSection />
