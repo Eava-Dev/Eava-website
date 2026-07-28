@@ -1,4 +1,5 @@
 import ScrollHero from "./components/ScrollHero";
+import OnboardingCTA from "./components/OnboardingCTA";
 import TalkToEavaWidget from "./components/TalkToEavaWidget";
 import FeaturesSection from "./components/FeaturesSection";
 import MarketingSection from "./components/MarketingSection";
@@ -12,6 +13,7 @@ export default function Home() {
   return (
     <main style={{ background: "#0A0B0D" }}>
       <ScrollHero />
+      <OnboardingCTA />
       <MarketingSection />
       <HowItWorksSection />
       <TalkToEavaWidget />
