@@ -159,7 +159,8 @@ export default function ScrollHero() {
             display: "flex",
             flexDirection: "column",
             justifyContent: "flex-end",
-            padding: "0 6vw 8vh",
+            gap: "clamp(1.75rem, 4vh, 3.25rem)",
+            padding: "0 7vw clamp(4rem, 10vh, 7rem)",
           }}
         >
           <motion.span
@@ -169,11 +170,10 @@ export default function ScrollHero() {
             variants={fadeUp}
             style={{
               fontFamily: "var(--font-inter)",
-              fontSize: "0.65rem",
+              fontSize: "0.75rem",
               letterSpacing: "0.25em",
               textTransform: "uppercase",
               color: "#22D3EE",
-              marginBottom: "2.5rem",
             }}
           >
             Voice Agent · Growth Agent
@@ -188,9 +188,8 @@ export default function ScrollHero() {
               style={{
                 position: "relative",
                 overflow: "hidden",
-                width: "calc(clamp(2.4rem, 6vw, 5.5rem) * 4.0781)",
-                height: "calc(clamp(2.4rem, 6vw, 5.5rem) * 0.8013)",
-                marginBottom: "2.5rem",
+                width: "calc(clamp(2.6rem, 7.5vw, 8rem) * 4.0781)",
+                height: "calc(clamp(2.6rem, 7.5vw, 8rem) * 0.8013)",
               }}
             >
               <img
@@ -198,9 +197,9 @@ export default function ScrollHero() {
                 alt="Eava"
                 style={{
                   position: "absolute",
-                  left: "calc(clamp(2.4rem, 6vw, 5.5rem) * -0.5104)",
-                  top: "calc(clamp(2.4rem, 6vw, 5.5rem) * -0.8123)",
-                  width: "calc(clamp(2.4rem, 6vw, 5.5rem) * 4.948)",
+                  left: "calc(clamp(2.6rem, 7.5vw, 8rem) * -0.5104)",
+                  top: "calc(clamp(2.6rem, 7.5vw, 8rem) * -0.8123)",
+                  width: "calc(clamp(2.6rem, 7.5vw, 8rem) * 4.948)",
                   height: "auto",
                 }}
               />
@@ -220,10 +219,10 @@ export default function ScrollHero() {
               color: "#0A0B0D",
               fontFamily: "var(--font-inter)",
               fontWeight: 500,
-              fontSize: "0.7rem",
+              fontSize: "0.8rem",
               letterSpacing: "0.18em",
               textTransform: "uppercase",
-              padding: "0.9rem 2.6rem",
+              padding: "1.05rem 3rem",
               borderRadius: "2px",
               textDecoration: "none",
               pointerEvents: "auto",
