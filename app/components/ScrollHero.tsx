@@ -207,25 +207,6 @@ export default function ScrollHero() {
             </motion.div>
           )}
 
-          <motion.p
-            custom={2}
-            initial="hidden"
-            animate={ready ? "visible" : "hidden"}
-            variants={fadeUp}
-            style={{
-              fontFamily: "var(--font-inter)",
-              fontWeight: 300,
-              fontSize: "1.05rem",
-              color: "#E5E5E5",
-              maxWidth: "460px",
-              lineHeight: 1.5,
-              marginBottom: "2.25rem",
-            }}
-          >
-            We generate you more calls and ensure every one turns into a
-            booked job.
-          </motion.p>
-
           <motion.a
             href="#hear-eava"
             custom={3}
