@@ -4,20 +4,8 @@ import FadeIn from "./FadeIn";
 
 const steps = [
   {
-    title: "Call Comes In",
-    copy: "A customer calls, any time, day or night",
-    icon: (
-      <path d="M4 5c0 8.284 6.716 15 15 15v-3.5a1.5 1.5 0 0 0-1.2-1.47l-3.2-.64a1.5 1.5 0 0 0-1.55.66l-.9 1.35a11.5 11.5 0 0 1-5.55-5.55l1.35-.9a1.5 1.5 0 0 0 .66-1.55l-.64-3.2A1.5 1.5 0 0 0 6.5 4H4Z" />
-    ),
-  },
-  {
-    title: "Eava Answers",
-    copy: "Sounds human, asks the right questions",
-    icon: <path d="M4 5h16v10H8l-4 4V5Z" />,
-  },
-  {
-    title: "Job Gets Booked",
-    copy: "Straight into your calendar, in real time",
+    title: "You Book a Demo",
+    copy: "Grab a time that works to get started.",
     icon: (
       <>
         <rect x="4" y="5" width="16" height="15" rx="2" />
@@ -26,8 +14,23 @@ const steps = [
     ),
   },
   {
-    title: "You Get Notified",
-    copy: "Instant text or email, no missed opportunity",
+    title: "We Learn Your Business",
+    copy: "We dig into how you operate, your services, what your customers actually ask, and how Eava can best assist your needs.",
+    icon: <path d="M4 5h16v10H8l-4 4V5Z" />,
+  },
+  {
+    title: "Eava Gets Fully Customized",
+    copy: "Built and trained specifically around your business, not a generic script, and grows right alongside your business as it grows.",
+    icon: (
+      <>
+        <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z" />
+      </>
+    ),
+  },
+  {
+    title: "Monitor Eava's Work 24/7",
+    copy: "Track every call, lead, and appointment in real time with our in house CRM Portal, built by our team.",
     icon: (
       <>
         <circle cx="12" cy="12" r="9" />
