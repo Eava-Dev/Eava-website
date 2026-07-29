@@ -77,7 +77,7 @@ export default function MarketingSection() {
             maxWidth: "760px",
           }}
         >
-          More Than a Bot. A Front Desk Built For You.
+          More Than a Bot. An Employee Built For You.
         </h2>
       </FadeIn>
 
