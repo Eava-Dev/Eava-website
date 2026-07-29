@@ -5,16 +5,19 @@ import WelcomeVideoPlayer from "./WelcomeVideoPlayer";
 
 const blocks = [
   {
-    title: "Lead Generation",
-    copy: "Targeted local ads and outreach campaigns built to put your business in front of homeowners who are ready to book.",
+    title: "Generic AI Receptionists",
+    copy: "Self-serve setup, scraped from your website. Generic scripts that guess at answers. Support is a ticket queue. You configure it yourself and live with the limits.",
+    highlighted: false,
   },
   {
-    title: "Review and Reputation Management",
-    copy: "Automated review requests after every job, plus monitoring so a bad review never sits unanswered.",
+    title: "Phone Systems With AI Bolted On",
+    copy: "Built for companies who need an entire phone system. AI answering is an add-on feature, not the product. Support scales to thousands of accounts, not your specific business.",
+    highlighted: false,
   },
   {
-    title: "Follow Up Automation",
-    copy: "Text and email sequences that reconnect with old leads and past customers, turning missed opportunities into booked jobs.",
+    title: "Eava",
+    copy: "Built by hand around your services, your pricing, your emergency process. Direct access to the two people who built it. Changes happen on a phone call, not a support ticket.",
+    highlighted: true,
   },
 ];
 
@@ -74,7 +77,7 @@ export default function MarketingSection() {
             maxWidth: "760px",
           }}
         >
-          More Than Answering. Growing Your Business.
+          More Than a Bot. A Front Desk Built For You.
         </h2>
       </FadeIn>
 
@@ -91,8 +94,9 @@ export default function MarketingSection() {
             marginBottom: "4rem",
           }}
         >
-          Eava does not just pick up the phone. We help fill your pipeline
-          in the first place.
+          Every other AI answering service configures itself from your
+          website in minutes. Eava is built by hand, for your business, by
+          people who pick up the phone when you call.
         </p>
       </FadeIn>
 
@@ -106,17 +110,28 @@ export default function MarketingSection() {
         {blocks.map((b, i) => (
           <FadeIn key={b.title} index={i + 2}>
             <div
-              style={{
-                borderTop: "1px solid rgba(34,211,238,0.2)",
-                paddingTop: "1.5rem",
-                height: "100%",
-              }}
+              style={
+                b.highlighted
+                  ? {
+                      border: "1px solid #22D3EE",
+                      borderRadius: "4px",
+                      background: "rgba(34,211,238,0.06)",
+                      boxShadow: "0 0 40px rgba(34,211,238,0.12)",
+                      padding: "2rem",
+                      height: "100%",
+                    }
+                  : {
+                      borderTop: "1px solid rgba(34,211,238,0.2)",
+                      paddingTop: "1.5rem",
+                      height: "100%",
+                    }
+              }
             >
               <h3
                 style={{
                   fontFamily: "var(--font-display)",
-                  fontWeight: 500,
-                  fontSize: "1.15rem",
+                  fontWeight: b.highlighted ? 700 : 500,
+                  fontSize: b.highlighted ? "1.35rem" : "1.15rem",
                   color: "#ffffff",
                   marginBottom: "0.6rem",
                 }}
@@ -142,21 +157,19 @@ export default function MarketingSection() {
       <FadeIn index={5}>
         <p
           style={{
-            fontFamily: "var(--font-display)",
-            fontStyle: "italic",
-            fontWeight: 500,
-            fontSize: "clamp(1.3rem, 2.5vw, 1.75rem)",
+            fontFamily: "var(--font-inter)",
+            fontWeight: 400,
+            fontSize: "1.05rem",
             color: "#E5E5E5",
-            maxWidth: "760px",
-            marginTop: "4rem",
+            maxWidth: "700px",
+            marginTop: "3rem",
             marginLeft: "auto",
             marginRight: "auto",
-            paddingTop: "2rem",
-            borderTop: "1px solid rgba(255,255,255,0.07)",
             textAlign: "center",
           }}
         >
-          One partner for the calls, the leads, and the growth.
+          You are not buying software. You are getting a front desk that
+          actually knows your business, backed by people who do too.
         </p>
       </FadeIn>
 
