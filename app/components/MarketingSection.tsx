@@ -16,7 +16,7 @@ const blocks = [
   },
   {
     title: "Eava",
-    copy: "Built by hand around your services, your pricing, your emergency process. Direct access to the two people who built it. Changes happen on a phone call, not a support ticket.",
+    copy: "Built entirely around your business, your services, your pricing, your emergency process, not a generic script. Every call flow is custom designed and tested before it ever answers a real customer. No guessing what a caller means, no robotic dead ends. It's a personal assistant in your back pocket, always on, always representing your business exactly the way you want. Your agent evolves as your business does, updated whenever something changes, not locked into a one size fits all template.",
     highlighted: true,
   },
 ];
