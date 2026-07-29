@@ -19,8 +19,8 @@ export default function Home() {
       <TalkToEavaWidget />
       <HearEavaSection />
       <FeaturesSection />
-      <PackagesSection />
       <MissedCallCostSection />
+      <PackagesSection />
       <ClosingCTA />
     </main>
   );
