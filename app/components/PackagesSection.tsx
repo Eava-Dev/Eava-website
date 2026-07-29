@@ -211,9 +211,7 @@ export default function PackagesSection() {
               </ul>
 
               <motion.a
-                href="https://calendly.com/taylor-eavaai/30min"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/onboarding"
                 whileHover={{ background: "#0A0B0D", color: "#22D3EE" }}
                 style={{
                   display: "inline-block",
