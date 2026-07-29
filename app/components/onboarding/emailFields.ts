@@ -1,14 +1,9 @@
-import { NextRequest, NextResponse } from "next/server";
-
-const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
-const RECIPIENT_EMAIL = "Contact@eavaai.com";
-
-interface QAPair {
+export interface QAPair {
   question: string;
   answer: string;
 }
 
-interface OnboardingPayload {
+export interface OnboardingPayload {
   businessName: string;
   industry: string;
   businessAddress: string;
@@ -50,7 +45,7 @@ function label(value: string, map: Record<string, string>): string {
   return map[value] ?? "";
 }
 
-function buildEmailFields(data: OnboardingPayload): Record<string, string> {
+export function buildEmailFields(data: OnboardingPayload): Record<string, string> {
   const fields: Record<string, string> = {
     "Business Name": data.businessName ?? "",
     "Industry / Type of Business": data.industry ?? "",
@@ -116,85 +111,4 @@ function buildEmailFields(data: OnboardingPayload): Record<string, string> {
   });
 
   return fields;
-}
-
-export async function POST(req: NextRequest) {
-  const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
-  if (!accessKey) {
-    return NextResponse.json(
-      { success: false, message: "Form is not configured yet." },
-      { status: 500 }
-    );
-  }
-
-  let payload: OnboardingPayload;
-  try {
-    payload = await req.json();
-  } catch {
-    return NextResponse.json(
-      { success: false, message: "Invalid submission." },
-      { status: 400 }
-    );
-  }
-
-  const fields = buildEmailFields(payload);
-
-  console.log(
-    "[onboarding] WEB3FORMS_ACCESS_KEY present:",
-    Boolean(accessKey)
-  );
-
-  try {
-    const web3formsRes = await fetch(WEB3FORMS_ENDPOINT, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        access_key: accessKey,
-        subject: `New Onboarding Submission${
-          payload.businessName ? `: ${payload.businessName}` : ""
-        }`,
-        from_name: "Eava Onboarding Form",
-        email: RECIPIENT_EMAIL,
-        ...fields,
-      }),
-    });
-
-    const rawBody = await web3formsRes.text();
-    console.log(
-      "[onboarding] Web3Forms response status:",
-      web3formsRes.status
-    );
-    console.log("[onboarding] Web3Forms response body:", rawBody);
-
-    let data: { success?: boolean; message?: string } = {};
-    try {
-      data = JSON.parse(rawBody);
-    } catch (parseErr) {
-      console.error(
-        "[onboarding] Failed to parse Web3Forms response as JSON:",
-        parseErr
-      );
-    }
-
-    if (!web3formsRes.ok || !data.success) {
-      return NextResponse.json(
-        { success: false, message: data?.message || "Submission failed." },
-        { status: 502 }
-      );
-    }
-
-    return NextResponse.json({ success: true });
-  } catch (err) {
-    console.error("[onboarding] Web3Forms fetch threw an error:", err);
-    return NextResponse.json(
-      {
-        success: false,
-        message: err instanceof Error ? err.message : "Unknown error contacting Web3Forms.",
-      },
-      { status: 500 }
-    );
-  }
 }

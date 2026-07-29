@@ -10,49 +10,16 @@ import {
   RadioGroupField,
   CheckboxGroupField,
 } from "./fields";
+import {
+  buildEmailFields,
+  type OnboardingPayload,
+  type QAPair,
+} from "./emailFields";
 
-interface QAPair {
-  question: string;
-  answer: string;
-}
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+const RECIPIENT_EMAIL = "Contact@eavaai.com";
 
-interface OnboardingFormData {
-  businessName: string;
-  industry: string;
-  businessAddress: string;
-  businessHours: string;
-  serviceArea: string;
-  currentPhone: string;
-  phonePreference: string;
-
-  callReasons: string[];
-  bookingMode: string;
-  callerInfo: string[];
-
-  hasEmergencies: string;
-  emergencyDescription: string;
-  emergencyPhone: string;
-  noEmergencyHandling: string;
-
-  services: string;
-  pricingMode: string;
-  pricingDetails: string;
-
-  faqs: QAPair[];
-
-  tone: string;
-  toneOther: string;
-  neverSayDo: string;
-  introLine: string;
-
-  notifyName: string;
-  notifyPhone: string;
-  notifyEmail: string;
-  notificationMethods: string[];
-  sendCustomerConfirmation: string;
-
-  additionalDetails: string;
-}
+type OnboardingFormData = OnboardingPayload;
 
 const initialFormData: OnboardingFormData = {
   businessName: "",
@@ -135,13 +102,41 @@ export default function OnboardingForm() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setStatus("submitting");
+
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+    if (!accessKey) {
+      setStatus("error");
+      return;
+    }
+
+    const fields = buildEmailFields(formData);
+
     try {
-      const res = await fetch("/api/onboarding", {
+      const res = await fetch(WEB3FORMS_ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: `New Onboarding Submission${
+            formData.businessName ? `: ${formData.businessName}` : ""
+          }`,
+          from_name: "Eava Onboarding Form",
+          email: RECIPIENT_EMAIL,
+          ...fields,
+        }),
       });
-      const data = await res.json();
+
+      const rawBody = await res.text();
+      let data: { success?: boolean } = {};
+      try {
+        data = JSON.parse(rawBody);
+      } catch {
+        data = {};
+      }
+
       if (res.ok && data.success) {
         setStatus("submitted");
       } else {
