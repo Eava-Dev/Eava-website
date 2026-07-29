@@ -41,10 +41,10 @@ export default function ClosingCTA() {
             lineHeight: 1.15,
           }}
         >
-          Your next customer is calling.
+          Your all around AI employee.
           <br />
           <span style={{ fontStyle: "italic", color: "#E5E5E5" }}>
-            Eava is already answering.
+            Working while you live your life.
           </span>
         </h2>
       </FadeIn>
