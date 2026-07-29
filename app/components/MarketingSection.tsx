@@ -155,30 +155,10 @@ export default function MarketingSection() {
       </div>
 
       <FadeIn index={5}>
-        <p
-          style={{
-            fontFamily: "var(--font-inter)",
-            fontWeight: 400,
-            fontSize: "1.05rem",
-            color: "#E5E5E5",
-            maxWidth: "700px",
-            marginTop: "3rem",
-            marginLeft: "auto",
-            marginRight: "auto",
-            textAlign: "center",
-          }}
-        >
-          You are not buying software. You are getting a front desk built
-          specifically for your business, not a generic script pretending to
-          be one.
-        </p>
-      </FadeIn>
-
-      <FadeIn index={6}>
         <WelcomeVideoPlayer />
       </FadeIn>
 
-      <FadeIn index={7}>
+      <FadeIn index={6}>
         <div
           style={{
             display: "grid",
