@@ -95,8 +95,8 @@ export default function MarketingSection() {
           }}
         >
           Every other AI answering service configures itself from your
-          website in minutes. Eava is built by hand, for your business, by
-          people who pick up the phone when you call.
+          website in minutes. Eava is built by hand, for your business, a
+          personal assistant tailored to you.
         </p>
       </FadeIn>
 
