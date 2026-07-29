@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { getCalApi } from "@calcom/embed-react";
 import { FormSection, TextField, SelectField } from "./fields";
 import { buildEmailFields, type OnboardingPayload } from "./emailFields";
-import CalendlyEmbed from "./CalendlyEmbed";
+import CalEmbed from "./CalEmbed";
 
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 const RECIPIENT_EMAIL = "Contact@eavaai.com";
@@ -47,10 +48,7 @@ export default function OnboardingForm() {
   const isReady = isRequiredFilled(formData);
 
   useEffect(() => {
-    const handleMessage = (event: MessageEvent) => {
-      if (event.origin !== "https://calendly.com") return;
-      if (event.data?.event !== "calendly.event_scheduled") return;
-
+    const handleBookingSuccessful = () => {
       const current = formDataRef.current;
       if (!isRequiredFilled(current)) return;
 
@@ -91,8 +89,32 @@ export default function OnboardingForm() {
         .catch(() => setSubmitStatus("error"));
     };
 
-    window.addEventListener("message", handleMessage);
-    return () => window.removeEventListener("message", handleMessage);
+    let cal: Awaited<ReturnType<typeof getCalApi>> | null = null;
+    let cancelled = false;
+
+    (async () => {
+      const api = await getCalApi();
+      if (cancelled) return;
+      cal = api;
+      cal("ui", {
+        theme: "dark",
+        styles: { branding: { brandColor: "#22d3ee" } },
+      });
+      cal("on", {
+        action: "bookingSuccessfulV2",
+        callback: handleBookingSuccessful,
+      });
+    })();
+
+    return () => {
+      cancelled = true;
+      if (cal) {
+        cal("off", {
+          action: "bookingSuccessfulV2",
+          callback: handleBookingSuccessful,
+        });
+      }
+    };
   }, []);
 
   return (
@@ -160,7 +182,7 @@ export default function OnboardingForm() {
         </p>
 
         <div style={{ position: "relative" }}>
-          <CalendlyEmbed />
+          <CalEmbed />
           {!isReady && (
             <div
               style={{
