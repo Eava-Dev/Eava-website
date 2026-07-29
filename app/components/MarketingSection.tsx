@@ -23,8 +23,8 @@ const blocks = [
 
 const highlights = [
   {
-    title: "24/7 Coverage",
-    copy: "Every call answered instantly, day or night, so no lead ever slips through the cracks",
+    title: "Always On, Never Off the Clock",
+    copy: "Handles calls, texts, and follow ups around the clock, so no lead or customer is ever left waiting.",
     icon: (
       <>
         <circle cx="12" cy="12" r="9" />
@@ -33,13 +33,13 @@ const highlights = [
     ),
   },
   {
-    title: "Sounds Completely Human",
-    copy: "Callers get a natural, real conversation, not a robotic phone tree",
+    title: "Feels Like Talking to a Person",
+    copy: "Natural conversation on every channel, not a robotic phone tree or a canned chatbot script.",
     icon: <path d="M4 5h16v10H8l-4 4V5Z" />,
   },
   {
-    title: "Books Real Appointments",
-    copy: "Straight into your calendar in real time, no manual follow up required",
+    title: "Fills Your Calendar Automatically",
+    copy: "Books appointments, sends reminders, and follows up on no shows, straight into your calendar in real time.",
     icon: (
       <>
         <rect x="4" y="5" width="16" height="15" rx="2" />
@@ -48,8 +48,8 @@ const highlights = [
     ),
   },
   {
-    title: "Grows Your Business",
-    copy: "Marketing, reviews, and follow ups included, not just call answering",
+    title: "Runs the Follow Through, Not Just the Front Desk",
+    copy: "Handles reviews, re engagement, and repeat business so nothing falls through after the first call.",
     icon: (
       <>
         <path d="M4 16l6-6 4 4 6-8" />
