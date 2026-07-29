@@ -139,28 +139,62 @@ export async function POST(req: NextRequest) {
 
   const fields = buildEmailFields(payload);
 
-  const web3formsRes = await fetch(WEB3FORMS_ENDPOINT, {
-    method: "POST",
-    headers: { "Content-Type": "application/json", Accept: "application/json" },
-    body: JSON.stringify({
-      access_key: accessKey,
-      subject: `New Onboarding Submission${
-        payload.businessName ? `: ${payload.businessName}` : ""
-      }`,
-      from_name: "Eava Onboarding Form",
-      email: RECIPIENT_EMAIL,
-      ...fields,
-    }),
-  });
+  console.log(
+    "[onboarding] WEB3FORMS_ACCESS_KEY present:",
+    Boolean(accessKey)
+  );
 
-  const data = await web3formsRes.json();
+  try {
+    const web3formsRes = await fetch(WEB3FORMS_ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        access_key: accessKey,
+        subject: `New Onboarding Submission${
+          payload.businessName ? `: ${payload.businessName}` : ""
+        }`,
+        from_name: "Eava Onboarding Form",
+        email: RECIPIENT_EMAIL,
+        ...fields,
+      }),
+    });
 
-  if (!web3formsRes.ok || !data.success) {
+    const rawBody = await web3formsRes.text();
+    console.log(
+      "[onboarding] Web3Forms response status:",
+      web3formsRes.status
+    );
+    console.log("[onboarding] Web3Forms response body:", rawBody);
+
+    let data: { success?: boolean; message?: string } = {};
+    try {
+      data = JSON.parse(rawBody);
+    } catch (parseErr) {
+      console.error(
+        "[onboarding] Failed to parse Web3Forms response as JSON:",
+        parseErr
+      );
+    }
+
+    if (!web3formsRes.ok || !data.success) {
+      return NextResponse.json(
+        { success: false, message: data?.message || "Submission failed." },
+        { status: 502 }
+      );
+    }
+
+    return NextResponse.json({ success: true });
+  } catch (err) {
+    console.error("[onboarding] Web3Forms fetch threw an error:", err);
     return NextResponse.json(
-      { success: false, message: data?.message || "Submission failed." },
-      { status: 502 }
+      {
+        success: false,
+        message: err instanceof Error ? err.message : "Unknown error contacting Web3Forms.",
+      },
+      { status: 500 }
     );
   }
-
-  return NextResponse.json({ success: true });
 }
