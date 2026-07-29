@@ -27,7 +27,7 @@ export default function WelcomeVideoPlayer() {
     >
       <video
         ref={videoRef}
-        src="/video/welcome.mp4"
+        src="/video/final_output_mixed.mp4"
         controls
         playsInline
         autoPlay={false}
