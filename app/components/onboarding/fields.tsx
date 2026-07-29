@@ -23,25 +23,6 @@ const inputStyle: CSSProperties = {
   fontSize: "0.95rem",
 };
 
-const choiceLabelStyle: CSSProperties = {
-  display: "flex",
-  alignItems: "center",
-  gap: "0.6rem",
-  fontFamily: "var(--font-inter)",
-  fontWeight: 300,
-  fontSize: "0.9rem",
-  color: "#E5E5E5",
-  cursor: "pointer",
-};
-
-const choiceInputStyle: CSSProperties = {
-  accentColor: "#22D3EE",
-  width: "16px",
-  height: "16px",
-  cursor: "pointer",
-  flexShrink: 0,
-};
-
 export function FormSection({
   title,
   description,
@@ -114,6 +95,7 @@ export function TextField({
   onChange,
   placeholder,
   required,
+  type = "text",
 }: {
   label: string;
   name: string;
@@ -121,13 +103,14 @@ export function TextField({
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
   required?: boolean;
+  type?: "text" | "email" | "tel";
 }) {
   return (
     <div>
       <FieldLabel required={required}>{label}</FieldLabel>
       <input
         className="of-input"
-        type="text"
+        type={type}
         name={name}
         value={value}
         onChange={onChange}
@@ -139,104 +122,43 @@ export function TextField({
   );
 }
 
-export function TextAreaField({
-  label,
-  name,
-  value,
-  onChange,
-  placeholder,
-  required,
-  rows = 3,
-}: {
-  label: string;
-  name: string;
-  value: string;
-  onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
-  placeholder?: string;
-  required?: boolean;
-  rows?: number;
-}) {
-  return (
-    <div>
-      <FieldLabel required={required}>{label}</FieldLabel>
-      <textarea
-        className="of-textarea"
-        name={name}
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-        required={required}
-        rows={rows}
-        style={{ ...inputStyle, resize: "vertical", lineHeight: 1.5 }}
-      />
-    </div>
-  );
-}
-
-export function RadioGroupField({
+export function SelectField({
   label,
   name,
   value,
   onChange,
   options,
   required,
+  placeholder = "Select one",
 }: {
   label: string;
   name: string;
   value: string;
   onChange: (value: string) => void;
-  options: { value: string; label: string }[];
+  options: string[];
   required?: boolean;
+  placeholder?: string;
 }) {
   return (
     <div>
       <FieldLabel required={required}>{label}</FieldLabel>
-      <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
+      <select
+        className="of-input"
+        name={name}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        required={required}
+        style={{ ...inputStyle, cursor: "pointer" }}
+      >
+        <option value="" disabled>
+          {placeholder}
+        </option>
         {options.map((opt) => (
-          <label key={opt.value} style={choiceLabelStyle}>
-            <input
-              type="radio"
-              name={name}
-              value={opt.value}
-              checked={value === opt.value}
-              onChange={() => onChange(opt.value)}
-              style={choiceInputStyle}
-            />
-            {opt.label}
-          </label>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-export function CheckboxGroupField({
-  label,
-  values,
-  onToggle,
-  options,
-}: {
-  label: string;
-  values: string[];
-  onToggle: (value: string) => void;
-  options: string[];
-}) {
-  return (
-    <div>
-      <FieldLabel>{label}</FieldLabel>
-      <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
-        {options.map((opt) => (
-          <label key={opt} style={choiceLabelStyle}>
-            <input
-              type="checkbox"
-              checked={values.includes(opt)}
-              onChange={() => onToggle(opt)}
-              style={choiceInputStyle}
-            />
+          <option key={opt} value={opt}>
             {opt}
-          </label>
+          </option>
         ))}
-      </div>
+      </select>
     </div>
   );
 }
