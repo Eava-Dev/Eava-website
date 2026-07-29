@@ -168,8 +168,9 @@ export default function MarketingSection() {
             textAlign: "center",
           }}
         >
-          You are not buying software. You are getting a front desk that
-          actually knows your business, backed by people who do too.
+          You are not buying software. You are getting a front desk built
+          specifically for your business, not a generic script pretending to
+          be one.
         </p>
       </FadeIn>
 
