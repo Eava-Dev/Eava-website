@@ -4,19 +4,24 @@ import FadeIn from "./FadeIn";
 
 const stats = [
   {
-    number: "62%",
-    label: "Of small business calls go unanswered",
-    sourceText: "Source: 411 Locals, 2024",
+    stat: "24/7",
+    title: "Never Clocks Out",
+    body: "Human receptionists work maybe 40 hours a week. Eava works nights, weekends, and holidays without ever calling in sick.",
   },
   {
-    number: "85%",
-    label: "Of missed callers never call back, most call a competitor instead",
-    sourceText: "Source: Aggregated industry data",
+    stat: "$40,000+",
+    title: "Saved Every Year",
+    body: "Average salary and benefits cost of a full-time receptionist, replaced by an employee that never stops working.",
   },
   {
-    number: "$126,000",
-    label: "Average yearly revenue lost to missed calls for a small service business",
-    sourceText: "Source: ServiceTitan, BIA/Kelsey, 411 Locals, and others",
+    stat: "20+ Hours",
+    title: "Back In Your Week",
+    body: "No more chasing missed calls after hours or catching up on messages before bed, Eava already handled it.",
+  },
+  {
+    stat: "1 Missed Call",
+    title: "Could Cost You Everything",
+    body: "The call you would have missed at 9pm could be your biggest job of the year, Eava's already on it.",
   },
 ];
 
@@ -42,22 +47,22 @@ export default function MissedCallCostSection() {
             textAlign: "center",
           }}
         >
-          The Cost of a Missed Call
+          The Time and Money Eava Gives Back
         </h2>
       </FadeIn>
 
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
           gap: "1.5rem",
-          maxWidth: "1100px",
+          maxWidth: "1160px",
           marginLeft: "auto",
           marginRight: "auto",
         }}
       >
         {stats.map((s, i) => (
-          <FadeIn key={s.number} index={i + 1}>
+          <FadeIn key={s.stat} index={i + 1}>
             <div
               style={{
                 border: "1px solid rgba(34,211,238,0.2)",
@@ -77,8 +82,19 @@ export default function MissedCallCostSection() {
                   marginBottom: "0.75rem",
                 }}
               >
-                {s.number}
+                {s.stat}
               </div>
+              <h3
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontWeight: 600,
+                  fontSize: "1.05rem",
+                  color: "#ffffff",
+                  marginBottom: "0.6rem",
+                }}
+              >
+                {s.title}
+              </h3>
               <p
                 style={{
                   fontFamily: "var(--font-inter)",
@@ -88,18 +104,7 @@ export default function MissedCallCostSection() {
                   lineHeight: 1.5,
                 }}
               >
-                {s.label}
-              </p>
-              <p
-                style={{
-                  fontFamily: "var(--font-inter)",
-                  fontWeight: 300,
-                  fontSize: "0.7rem",
-                  color: "#888888",
-                  marginTop: "0.85rem",
-                }}
-              >
-                {s.sourceText}
+                {s.body}
               </p>
             </div>
           </FadeIn>
