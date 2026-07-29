@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState, type FormEvent } from "react";
+import { motion } from "framer-motion";
 import { getCalApi } from "@calcom/embed-react";
 import { FormSection, TextField, SelectField } from "./fields";
 import { buildEmailFields, type OnboardingPayload } from "./emailFields";
@@ -19,7 +20,7 @@ const initialFormData: OnboardingPayload = {
   phoneProblem: "",
 };
 
-type SubmitStatus = "idle" | "sent" | "error";
+type SubmitStatus = "idle" | "submitting" | "sent" | "error";
 
 function isRequiredFilled(data: OnboardingPayload): boolean {
   return (
@@ -34,9 +35,7 @@ function isRequiredFilled(data: OnboardingPayload): boolean {
 export default function OnboardingForm() {
   const [formData, setFormData] = useState<OnboardingPayload>(initialFormData);
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
-
-  const formDataRef = useRef(formData);
-  formDataRef.current = formData;
+  const [hasUnlocked, setHasUnlocked] = useState(false);
 
   const updateField = <K extends keyof OnboardingPayload>(
     key: K,
@@ -45,22 +44,41 @@ export default function OnboardingForm() {
     setFormData((prev) => ({ ...prev, [key]: value }));
   };
 
-  const isReady = isRequiredFilled(formData);
-
   useEffect(() => {
-    const handleBookingSuccessful = () => {
-      const current = formDataRef.current;
-      if (!isRequiredFilled(current)) return;
+    let cancelled = false;
+    (async () => {
+      const cal = await getCalApi();
+      if (cancelled) return;
+      cal("ui", {
+        theme: "dark",
+        styles: { branding: { brandColor: "#22d3ee" } },
+      });
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
-      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
-      if (!accessKey) {
-        setSubmitStatus("error");
-        return;
-      }
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
 
-      const fields = buildEmailFields(current);
+    if (!isRequiredFilled(formData)) {
+      setSubmitStatus("error");
+      return;
+    }
 
-      fetch(WEB3FORMS_ENDPOINT, {
+    setSubmitStatus("submitting");
+
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+    if (!accessKey) {
+      setSubmitStatus("error");
+      return;
+    }
+
+    const fields = buildEmailFields(formData);
+
+    try {
+      const res = await fetch(WEB3FORMS_ENDPOINT, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -69,56 +87,35 @@ export default function OnboardingForm() {
         body: JSON.stringify({
           access_key: accessKey,
           subject: `New Onboarding Submission${
-            current.business ? `: ${current.business}` : ""
+            formData.business ? `: ${formData.business}` : ""
           }`,
           from_name: "Eava Onboarding Form",
           email: RECIPIENT_EMAIL,
           ...fields,
         }),
-      })
-        .then(async (res) => {
-          const rawBody = await res.text();
-          let data: { success?: boolean } = {};
-          try {
-            data = JSON.parse(rawBody);
-          } catch {
-            data = {};
-          }
-          setSubmitStatus(res.ok && data.success ? "sent" : "error");
-        })
-        .catch(() => setSubmitStatus("error"));
-    };
-
-    let cal: Awaited<ReturnType<typeof getCalApi>> | null = null;
-    let cancelled = false;
-
-    (async () => {
-      const api = await getCalApi();
-      if (cancelled) return;
-      cal = api;
-      cal("ui", {
-        theme: "dark",
-        styles: { branding: { brandColor: "#22d3ee" } },
       });
-      cal("on", {
-        action: "bookingSuccessfulV2",
-        callback: handleBookingSuccessful,
-      });
-    })();
 
-    return () => {
-      cancelled = true;
-      if (cal) {
-        cal("off", {
-          action: "bookingSuccessfulV2",
-          callback: handleBookingSuccessful,
-        });
+      const rawBody = await res.text();
+      let data: { success?: boolean } = {};
+      try {
+        data = JSON.parse(rawBody);
+      } catch {
+        data = {};
       }
-    };
-  }, []);
+
+      if (res.ok && data.success) {
+        setSubmitStatus("sent");
+        setHasUnlocked(true);
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch {
+      setSubmitStatus("error");
+    }
+  };
 
   return (
-    <>
+    <form onSubmit={handleSubmit}>
       <FormSection title="Your Details">
         <TextField
           label="Name"
@@ -167,7 +164,73 @@ export default function OnboardingForm() {
         />
       </FormSection>
 
-      <div style={{ marginTop: "2rem" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "1rem",
+          marginBottom: "2.5rem",
+        }}
+      >
+        <motion.button
+          type="submit"
+          disabled={submitStatus === "submitting"}
+          whileHover={
+            submitStatus === "submitting"
+              ? undefined
+              : { background: "#0A0B0D", color: "#22D3EE" }
+          }
+          style={{
+            display: "inline-block",
+            width: "fit-content",
+            background: "#22D3EE",
+            color: "#0A0B0D",
+            border: "1px solid #22D3EE",
+            fontFamily: "var(--font-inter)",
+            fontWeight: 500,
+            fontSize: "0.8rem",
+            letterSpacing: "0.18em",
+            textTransform: "uppercase",
+            padding: "1rem 3rem",
+            borderRadius: "2px",
+            cursor: submitStatus === "submitting" ? "default" : "pointer",
+            opacity: submitStatus === "submitting" ? 0.6 : 1,
+          }}
+        >
+          {submitStatus === "submitting" ? "Submitting…" : "Submit"}
+        </motion.button>
+
+        {submitStatus === "sent" && (
+          <p
+            style={{
+              fontFamily: "var(--font-inter)",
+              fontWeight: 300,
+              fontSize: "0.9rem",
+              color: "#22D3EE",
+              textAlign: "center",
+            }}
+          >
+            Got it, now pick a time below.
+          </p>
+        )}
+
+        {submitStatus === "error" && (
+          <p
+            style={{
+              fontFamily: "var(--font-inter)",
+              fontWeight: 300,
+              fontSize: "0.8rem",
+              color: "#ff6b6b",
+              textAlign: "center",
+            }}
+          >
+            Something went wrong submitting your details. Please try again.
+          </p>
+        )}
+      </div>
+
+      <div>
         <p
           style={{
             fontFamily: "var(--font-inter)",
@@ -183,7 +246,7 @@ export default function OnboardingForm() {
 
         <div style={{ position: "relative" }}>
           <CalEmbed />
-          {!isReady && (
+          {!hasUnlocked && (
             <div
               style={{
                 position: "absolute",
@@ -205,28 +268,12 @@ export default function OnboardingForm() {
                   maxWidth: "320px",
                 }}
               >
-                Fill in your details above to unlock scheduling.
+                Submit your details above to unlock scheduling.
               </p>
             </div>
           )}
         </div>
-
-        {submitStatus === "error" && (
-          <p
-            style={{
-              fontFamily: "var(--font-inter)",
-              fontWeight: 300,
-              fontSize: "0.8rem",
-              color: "#ff6b6b",
-              textAlign: "center",
-              marginTop: "0.85rem",
-            }}
-          >
-            We couldn&rsquo;t save your details automatically. Your booking
-            still went through, please email us your details directly too.
-          </p>
-        )}
       </div>
-    </>
+    </form>
   );
 }
