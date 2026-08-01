@@ -14,7 +14,7 @@ const labelStyle: CSSProperties = {
 const inputStyle: CSSProperties = {
   width: "100%",
   background: "rgba(255,255,255,0.03)",
-  border: "1px solid rgba(255,255,255,0.15)",
+  border: "1px solid rgba(255,255,255,0.4)",
   borderRadius: "2px",
   color: "#ffffff",
   padding: "0.75rem 1rem",
@@ -74,16 +74,23 @@ export function FormSection({
 }
 
 export function FieldLabel({
+  htmlFor,
   children,
   required,
 }: {
+  htmlFor: string;
   children: ReactNode;
   required?: boolean;
 }) {
   return (
-    <label style={labelStyle}>
+    <label htmlFor={htmlFor} style={labelStyle}>
       {children}
-      {required && <span style={{ color: "#22D3EE" }}> *</span>}
+      {required && (
+        <span style={{ color: "#22D3EE" }} aria-hidden="true">
+          {" "}
+          *
+        </span>
+      )}
     </label>
   );
 }
@@ -107,15 +114,19 @@ export function TextField({
 }) {
   return (
     <div>
-      <FieldLabel required={required}>{label}</FieldLabel>
+      <FieldLabel htmlFor={name} required={required}>
+        {label}
+      </FieldLabel>
       <input
         className="of-input"
+        id={name}
         type={type}
         name={name}
         value={value}
         onChange={onChange}
         placeholder={placeholder}
         required={required}
+        aria-required={required}
         style={inputStyle}
       />
     </div>
@@ -141,13 +152,17 @@ export function SelectField({
 }) {
   return (
     <div>
-      <FieldLabel required={required}>{label}</FieldLabel>
+      <FieldLabel htmlFor={name} required={required}>
+        {label}
+      </FieldLabel>
       <select
         className="of-input"
+        id={name}
         name={name}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         required={required}
+        aria-required={required}
         style={{ ...inputStyle, cursor: "pointer" }}
       >
         <option value="" disabled>

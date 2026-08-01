@@ -245,7 +245,9 @@ export default function OnboardingForm() {
         </p>
 
         <div style={{ position: "relative" }}>
-          <CalEmbed />
+          <div inert={!hasUnlocked}>
+            <CalEmbed />
+          </div>
           {!hasUnlocked && (
             <div
               style={{
@@ -258,6 +260,7 @@ export default function OnboardingForm() {
                 textAlign: "center",
                 padding: "2rem",
               }}
+              role="status"
             >
               <p
                 style={{

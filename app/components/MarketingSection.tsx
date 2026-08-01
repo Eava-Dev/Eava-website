@@ -199,6 +199,7 @@ export default function MarketingSection() {
                   strokeWidth="1.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
+                  aria-hidden="true"
                 >
                   {h.icon}
                 </svg>

@@ -128,6 +128,7 @@ export default function FeaturesSection() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 style={{ marginBottom: "1.25rem" }}
+                aria-hidden="true"
               >
                 {f.icon}
               </svg>

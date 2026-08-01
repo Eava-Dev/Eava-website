@@ -72,6 +72,7 @@ function CheckIcon() {
       strokeLinecap="round"
       strokeLinejoin="round"
       style={{ flexShrink: 0, marginTop: "0.2rem" }}
+      aria-hidden="true"
     >
       <path d="M5 13l4 4L19 7" />
     </svg>

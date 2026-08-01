@@ -105,6 +105,7 @@ export default function TalkToEavaWidget() {
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
+              aria-hidden="true"
             >
               <path d="M12 3a4 4 0 0 1 4 4v4a4 4 0 0 1-8 0V7a4 4 0 0 1 4-4Z" />
               <path d="M6 11a6 6 0 0 0 12 0M12 21v-4" />
@@ -113,7 +114,7 @@ export default function TalkToEavaWidget() {
 
           {status === "cooldown" ? (
             <>
-              <h3
+              <h2
                 style={{
                   fontFamily: "var(--font-display)",
                   fontWeight: 600,
@@ -123,7 +124,7 @@ export default function TalkToEavaWidget() {
                 }}
               >
                 You&rsquo;ve Already Talked to Eava Today
-              </h3>
+              </h2>
               <p
                 style={{
                   fontFamily: "var(--font-inter)",
@@ -160,7 +161,7 @@ export default function TalkToEavaWidget() {
             </>
           ) : (
             <>
-              <h3
+              <h2
                 style={{
                   fontFamily: "var(--font-display)",
                   fontWeight: 600,
@@ -170,7 +171,7 @@ export default function TalkToEavaWidget() {
                 }}
               >
                 Talk to Eava, Live
-              </h3>
+              </h2>
               <p
                 style={{
                   fontFamily: "var(--font-inter)",
