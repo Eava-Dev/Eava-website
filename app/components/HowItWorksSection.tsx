@@ -30,7 +30,7 @@ const steps = [
   },
   {
     title: "Monitor Eava's Work 24/7",
-    copy: "Track every call, lead, and appointment in real time with our in house CRM Portal, built by our team.",
+    copy: "Track every call, lead, and appointment in real time with our online portal.",
     icon: (
       <>
         <circle cx="12" cy="12" r="9" />
