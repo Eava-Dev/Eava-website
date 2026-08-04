@@ -31,8 +31,8 @@ const features = [
     ),
   },
   {
-    title: "Missed Call Text-Back",
-    copy: "If a call is ever missed, an automatic text goes out right away so the lead never goes cold.",
+    title: "Missed Call Callback",
+    copy: "If a call is ever missed, Eava calls the lead right back so they never go cold.",
     icon: (
       <>
         <rect x="3" y="4" width="8" height="8" rx="1" />
@@ -43,8 +43,8 @@ const features = [
     ),
   },
   {
-    title: "Two-Way SMS & Follow-Up",
-    copy: "Leads who'd rather text than call can book that way too, and automated follow-up sequences bring back leads who didn't convert the first time.",
+    title: "Automated Follow-Up",
+    copy: "Automated follow-up sequences bring back leads who didn't convert the first time, so no opportunity gets left on the table.",
     icon: (
       <>
         <path d="M12 3a4 4 0 0 1 4 4v4a4 4 0 0 1-8 0V7a4 4 0 0 1 4-4Z" />
