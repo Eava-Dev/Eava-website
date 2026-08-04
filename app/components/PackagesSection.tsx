@@ -5,53 +5,41 @@ import FadeIn from "./FadeIn";
 
 const packages = [
   {
-    badge: null,
-    title: "Eava Starter",
-    tagline: "Never miss another customer call.",
-    highlighted: false,
+    badge: "Most Popular",
+    title: "Eava Essential",
+    price: "$599",
+    period: "/month",
+    tagline:
+      "Your assistant starts working even when you're not on the phone.",
+    highlighted: true,
     features: [
       "24/7 AI receptionist",
       "Answers every inbound call",
       "Qualifies new leads",
       "Books appointments",
       "Emergency call detection",
-      "Missed call callback",
-      "Client portal access, view your calls, leads, and appointments anytime",
-      "Works with your existing phone number",
-      "Dedicated onboarding and support",
-    ],
-  },
-  {
-    badge: "Most Popular",
-    title: "Eava Essential",
-    tagline:
-      "Your assistant starts working even when you're not on the phone.",
-    highlighted: true,
-    features: [
-      "Everything in Starter, plus:",
-      "Automated appointment reminders, Eava reaches out ahead of their appointment to confirm and cut down no-shows",
-      "Automated follow-up for leads who didn't book",
-      "Full call recordings and transcripts in your portal",
-      "Weekly and monthly reporting dashboard",
-      "Higher monthly usage",
-      "Priority support",
+      "Real-time emergency email alerts to you",
+      "Full call recordings & transcripts",
+      "Live lead & contact pipeline",
+      "Weekly reporting dashboard",
+      "Works with your existing number",
+      "Dedicated onboarding & support",
     ],
   },
   {
     badge: null,
     title: "Eava Pro",
+    price: "$999",
+    period: "/month",
     tagline: "A true personal assistant for your business.",
     highlighted: false,
     features: [
       "Everything in Essential, plus:",
+      "Missed-call recovery, automatic AI callback within minutes of any missed, unanswered, or dropped call",
+      "Weekly business digest, a Sunday evening summary of calls, leads, and appointments before your week starts",
       "Returning caller recognition, Eava knows your repeat customers and greets them accordingly",
-      "Daily and weekly digest, a summary of everything Eava handled, sent straight to you",
-      "Lead pipeline tracking in your portal",
-      "Customer history across every call",
-      "Advanced workflows",
-      "Custom integrations",
-      "Multiple departments or locations",
-      "Fastest support",
+      "Higher call volume included",
+      "Priority support & faster response",
     ],
   },
 ];
@@ -112,14 +100,14 @@ export default function PackagesSection() {
           }}
         >
           Every plan includes a custom-built AI voice agent tailored to
-          your business, pricing depends on your call volume and needs
+          your business.
         </p>
       </FadeIn>
 
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
           gap: "2.5rem",
           alignItems: "start",
         }}
@@ -176,6 +164,29 @@ export default function PackagesSection() {
               >
                 {pkg.title}
               </h3>
+
+              <div style={{ marginBottom: "0.75rem" }}>
+                <span
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontWeight: 700,
+                    fontSize: "2.25rem",
+                    color: "#22D3EE",
+                  }}
+                >
+                  {pkg.price}
+                </span>
+                <span
+                  style={{
+                    fontFamily: "var(--font-inter)",
+                    fontWeight: 300,
+                    fontSize: "0.95rem",
+                    color: "#888888",
+                  }}
+                >
+                  {pkg.period}
+                </span>
+              </div>
 
               <p
                 style={{
@@ -239,12 +250,27 @@ export default function PackagesSection() {
                   textDecoration: "none",
                 }}
               >
-                Book Demo For Pricing
+                Get Started
               </motion.a>
             </div>
           </FadeIn>
         ))}
       </div>
+
+      <FadeIn index={4}>
+        <p
+          style={{
+            fontFamily: "var(--font-inter)",
+            fontWeight: 300,
+            fontSize: "0.85rem",
+            color: "#888888",
+            textAlign: "center",
+            marginTop: "2rem",
+          }}
+        >
+          Plus a one-time $497 onboarding fee, applies to both plans.
+        </p>
+      </FadeIn>
     </section>
   );
 }
