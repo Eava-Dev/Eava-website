@@ -5,13 +5,11 @@ import FadeIn from "./FadeIn";
 
 const packages = [
   {
-    badge: "Most Popular",
+    badge: null,
     title: "Eava Essential",
-    price: "$599",
-    period: "/month",
     tagline:
       "Your assistant starts working even when you're not on the phone.",
-    highlighted: true,
+    highlighted: false,
     features: [
       "24/7 AI receptionist",
       "Answers every inbound call",
@@ -27,12 +25,10 @@ const packages = [
     ],
   },
   {
-    badge: null,
+    badge: "Most Popular",
     title: "Eava Pro",
-    price: "$999",
-    period: "/month",
     tagline: "A true personal assistant for your business.",
-    highlighted: false,
+    highlighted: true,
     features: [
       "Everything in Essential, plus:",
       "Missed-call recovery, automatic AI callback within minutes of any missed, unanswered, or dropped call",
@@ -100,7 +96,7 @@ export default function PackagesSection() {
           }}
         >
           Every plan includes a custom-built AI voice agent tailored to
-          your business.
+          your business, pricing depends on your call volume and needs.
         </p>
       </FadeIn>
 
@@ -165,29 +161,6 @@ export default function PackagesSection() {
                 {pkg.title}
               </h3>
 
-              <div style={{ marginBottom: "0.75rem" }}>
-                <span
-                  style={{
-                    fontFamily: "var(--font-display)",
-                    fontWeight: 700,
-                    fontSize: "2.25rem",
-                    color: "#22D3EE",
-                  }}
-                >
-                  {pkg.price}
-                </span>
-                <span
-                  style={{
-                    fontFamily: "var(--font-inter)",
-                    fontWeight: 300,
-                    fontSize: "0.95rem",
-                    color: "#888888",
-                  }}
-                >
-                  {pkg.period}
-                </span>
-              </div>
-
               <p
                 style={{
                   fontFamily: "var(--font-inter)",
@@ -250,27 +223,12 @@ export default function PackagesSection() {
                   textDecoration: "none",
                 }}
               >
-                Get Started
+                Book Demo For Pricing
               </motion.a>
             </div>
           </FadeIn>
         ))}
       </div>
-
-      <FadeIn index={4}>
-        <p
-          style={{
-            fontFamily: "var(--font-inter)",
-            fontWeight: 300,
-            fontSize: "0.85rem",
-            color: "#888888",
-            textAlign: "center",
-            marginTop: "2rem",
-          }}
-        >
-          Plus a one-time $497 onboarding fee, applies to both plans.
-        </p>
-      </FadeIn>
     </section>
   );
 }
