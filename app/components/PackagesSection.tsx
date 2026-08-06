@@ -14,7 +14,7 @@ const packages = [
       "24/7 AI receptionist",
       "Answers every inbound call",
       "Qualifies new leads",
-      "Books appointments",
+      "Captures appointment requests",
       "Emergency call detection",
       "Real-time emergency email alerts to you",
       "Full call recordings & transcripts",
