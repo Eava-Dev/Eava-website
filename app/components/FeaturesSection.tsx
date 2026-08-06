@@ -11,8 +11,8 @@ const features = [
     ),
   },
   {
-    title: "Lead Qualification & Booking",
-    copy: "Eava asks the right questions, understands the job, and books the appointment straight into your calendar in real time.",
+    title: "Lead Qualification & Appointment Requests",
+    copy: "Eava asks the right questions, understands the job, and captures everything your team needs — so you can get the appointment on the books fast.",
     icon: (
       <>
         <circle cx="12" cy="8" r="3" />
@@ -21,8 +21,8 @@ const features = [
     ),
   },
   {
-    title: "Emergency Detection & Live Transfer",
-    copy: "Urgent calls are recognized instantly and can be transferred live to a real person when it matters most.",
+    title: "Emergency Detection & Instant Alerts",
+    copy: "Urgent calls are recognized instantly, and you're notified by email right away with the caller's details and a call summary — so nothing urgent slips through.",
     icon: (
       <>
         <rect x="4" y="5" width="16" height="15" rx="2" />
@@ -43,22 +43,25 @@ const features = [
     ),
   },
   {
-    title: "Automated Follow-Up",
-    copy: "Automated follow-up sequences bring back leads who didn't convert the first time, so no opportunity gets left on the table.",
+    title: "Returning Caller Recognition",
+    copy: "Eava recognizes repeat callers and greets them by name, so returning customers feel like more than just another number.",
     icon: (
       <>
-        <path d="M12 3a4 4 0 0 1 4 4v4a4 4 0 0 1-8 0V7a4 4 0 0 1 4-4Z" />
-        <path d="M6 11a6 6 0 0 0 12 0M12 21v-4" />
+        <path d="M17 1l4 4-4 4" />
+        <path d="M3 11V9a4 4 0 0 1 4-4h14" />
+        <path d="M7 23l-4-4 4-4" />
+        <path d="M21 13v2a4 4 0 0 1-4 4H3" />
       </>
     ),
   },
   {
-    title: "Review & Reputation Management",
-    copy: "Automated review requests after every job, plus monitoring so your reputation stays strong.",
+    title: "Weekly Performance Reports",
+    copy: "Get a clear weekly summary of every call, lead, and appointment — so you always know exactly how your phone line is performing.",
     icon: (
       <>
-        <path d="M6 3h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" />
-        <path d="M9 12h6M9 16h6M9 8h3" />
+        <path d="M18 20V10" />
+        <path d="M12 20V4" />
+        <path d="M6 20v-6" />
       </>
     ),
   },
