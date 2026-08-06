@@ -65,6 +65,7 @@ export default function TalkToEavaWidget() {
 
   return (
     <div
+      id="hear-eava"
       style={{
         background: "#0A0B0D",
         padding: "3rem 6vw 0",

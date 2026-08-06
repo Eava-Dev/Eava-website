@@ -3,7 +3,6 @@ import OnboardingCTA from "./components/OnboardingCTA";
 import TalkToEavaWidget from "./components/TalkToEavaWidget";
 import FeaturesSection from "./components/FeaturesSection";
 import MarketingSection from "./components/MarketingSection";
-import HearEavaSection from "./components/HearEavaSection";
 import PackagesSection from "./components/PackagesSection";
 import MissedCallCostSection from "./components/MissedCallCostSection";
 import HowItWorksSection from "./components/HowItWorksSection";
@@ -21,7 +20,6 @@ export default function Home() {
       <MarketingSection />
       <HowItWorksSection />
       <TalkToEavaWidget />
-      <HearEavaSection />
       <FeaturesSection />
       <MissedCallCostSection />
       <PackagesSection />
