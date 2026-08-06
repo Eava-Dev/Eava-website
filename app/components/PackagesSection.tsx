@@ -34,6 +34,8 @@ const packages = [
       "Missed-call recovery, automatic AI callback within minutes of any missed, unanswered, or dropped call",
       "Weekly business digest, a Sunday evening summary of calls, leads, and appointments before your week starts",
       "Returning caller recognition, Eava knows your repeat customers and greets them accordingly",
+      "Automated appointment reminders, customers get a reminder the day before, cutting down no-shows",
+      "Automated lead follow-up, anyone who calls but doesn't book gets a friendly follow-up so the lead doesn't go cold",
       "Higher call volume included",
       "Priority support & faster response",
     ],
