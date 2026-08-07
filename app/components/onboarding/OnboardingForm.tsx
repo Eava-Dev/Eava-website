@@ -6,6 +6,8 @@ import { getCalApi } from "@calcom/embed-react";
 import { FormSection, TextField, SelectField } from "./fields";
 import { buildEmailFields, type OnboardingPayload } from "./emailFields";
 import CalEmbed from "./CalEmbed";
+import ConsentNotice from "../ConsentNotice";
+import { useThirdPartyConsent } from "../../hooks/useThirdPartyConsent";
 
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 const RECIPIENT_EMAIL = "Contact@eavaai.com";
@@ -36,6 +38,7 @@ export default function OnboardingForm() {
   const [formData, setFormData] = useState<OnboardingPayload>(initialFormData);
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
   const [hasUnlocked, setHasUnlocked] = useState(false);
+  const { hasConsented, grantConsent } = useThirdPartyConsent();
 
   const updateField = <K extends keyof OnboardingPayload>(
     key: K,
@@ -45,6 +48,8 @@ export default function OnboardingForm() {
   };
 
   useEffect(() => {
+    if (!hasConsented) return;
+
     let cancelled = false;
     (async () => {
       const cal = await getCalApi();
@@ -57,7 +62,7 @@ export default function OnboardingForm() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [hasConsented]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -244,38 +249,42 @@ export default function OnboardingForm() {
           Pick a time that works for you to book your demo.
         </p>
 
-        <div style={{ position: "relative" }}>
-          <div inert={!hasUnlocked}>
-            <CalEmbed />
-          </div>
-          {!hasUnlocked && (
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                background: "rgba(10,11,13,0.85)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                textAlign: "center",
-                padding: "2rem",
-              }}
-              role="status"
-            >
-              <p
-                style={{
-                  fontFamily: "var(--font-inter)",
-                  fontWeight: 300,
-                  fontSize: "0.9rem",
-                  color: "#888888",
-                  maxWidth: "320px",
-                }}
-              >
-                Submit your details above to unlock scheduling.
-              </p>
+        {hasConsented ? (
+          <div style={{ position: "relative" }}>
+            <div inert={!hasUnlocked}>
+              <CalEmbed />
             </div>
-          )}
-        </div>
+            {!hasUnlocked && (
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background: "rgba(10,11,13,0.85)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  textAlign: "center",
+                  padding: "2rem",
+                }}
+                role="status"
+              >
+                <p
+                  style={{
+                    fontFamily: "var(--font-inter)",
+                    fontWeight: 300,
+                    fontSize: "0.9rem",
+                    color: "#888888",
+                    maxWidth: "320px",
+                  }}
+                >
+                  Submit your details above to unlock scheduling.
+                </p>
+              </div>
+            )}
+          </div>
+        ) : (
+          <ConsentNotice onContinue={grantConsent} />
+        )}
       </div>
     </form>
   );

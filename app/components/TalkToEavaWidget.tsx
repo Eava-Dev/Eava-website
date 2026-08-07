@@ -3,11 +3,15 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import FadeIn from "./FadeIn";
+import ConsentNotice from "./ConsentNotice";
+import { useThirdPartyConsent } from "../hooks/useThirdPartyConsent";
 
 type Status = "checking" | "available" | "cooldown" | "claiming" | "active";
 
 export default function TalkToEavaWidget() {
   const [status, setStatus] = useState<Status>("checking");
+  const [showConsentPrompt, setShowConsentPrompt] = useState(false);
+  const { hasConsented, grantConsent } = useThirdPartyConsent();
 
   useEffect(() => {
     let cancelled = false;
@@ -34,6 +38,20 @@ export default function TalkToEavaWidget() {
       .catch(() => {
         setStatus("cooldown");
       });
+  };
+
+  const handleStartClick = () => {
+    if (hasConsented) {
+      handleStartCall();
+    } else {
+      setShowConsentPrompt(true);
+    }
+  };
+
+  const handleConsentContinue = () => {
+    grantConsent();
+    setShowConsentPrompt(false);
+    handleStartCall();
   };
 
   useEffect(() => {
@@ -193,35 +211,38 @@ export default function TalkToEavaWidget() {
                 {status === "active" &&
                   "Click the “Talk to Eava” button in the corner of your screen to start a live voice conversation."}
               </p>
-              {(status === "available" || status === "claiming") && (
-                <motion.button
-                  type="button"
-                  onClick={handleStartCall}
-                  disabled={status === "claiming"}
-                  whileHover={
-                    status === "claiming"
-                      ? undefined
-                      : { background: "#0A0B0D", color: "#22D3EE" }
-                  }
-                  style={{
-                    display: "inline-block",
-                    background: "#22D3EE",
-                    color: "#0A0B0D",
-                    border: "1px solid #22D3EE",
-                    fontFamily: "var(--font-inter)",
-                    fontWeight: 500,
-                    fontSize: "0.7rem",
-                    letterSpacing: "0.18em",
-                    textTransform: "uppercase",
-                    padding: "0.9rem 2.2rem",
-                    borderRadius: "2px",
-                    cursor: status === "claiming" ? "default" : "pointer",
-                    opacity: status === "claiming" ? 0.6 : 1,
-                  }}
-                >
-                  {status === "claiming" ? "Starting…" : "Start Live Demo"}
-                </motion.button>
-              )}
+              {(status === "available" || status === "claiming") &&
+                (showConsentPrompt ? (
+                  <ConsentNotice onContinue={handleConsentContinue} />
+                ) : (
+                  <motion.button
+                    type="button"
+                    onClick={handleStartClick}
+                    disabled={status === "claiming"}
+                    whileHover={
+                      status === "claiming"
+                        ? undefined
+                        : { background: "#0A0B0D", color: "#22D3EE" }
+                    }
+                    style={{
+                      display: "inline-block",
+                      background: "#22D3EE",
+                      color: "#0A0B0D",
+                      border: "1px solid #22D3EE",
+                      fontFamily: "var(--font-inter)",
+                      fontWeight: 500,
+                      fontSize: "0.7rem",
+                      letterSpacing: "0.18em",
+                      textTransform: "uppercase",
+                      padding: "0.9rem 2.2rem",
+                      borderRadius: "2px",
+                      cursor: status === "claiming" ? "default" : "pointer",
+                      opacity: status === "claiming" ? 0.6 : 1,
+                    }}
+                  >
+                    {status === "claiming" ? "Starting…" : "Start Live Demo"}
+                  </motion.button>
+                ))}
             </>
           )}
         </div>
