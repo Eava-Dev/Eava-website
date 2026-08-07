@@ -113,8 +113,8 @@ export default function PrivacyPolicyPage() {
         <h2 style={h2Style}>How We Use Third-Party Services</h2>
 
         <p style={pStyle}>
-          We use the following third-party services to operate this Site.
-          When you interact with these features, your information is also
+          We use trusted third-party services to operate this Site. When
+          you interact with these features, your information is also
           subject to that provider&rsquo;s own privacy policy:
         </p>
 
@@ -129,21 +129,22 @@ export default function PrivacyPolicyPage() {
           }}
         >
           <li style={pStyle}>
-            <span style={leadStyle}>Web3Forms</span> &mdash; processes and
-            delivers contact form submissions to our team by email.
+            <span style={leadStyle}>Form processing service</span>{" "}
+            &mdash; processes and delivers contact form submissions to our
+            team by email.
           </li>
           <li style={pStyle}>
-            <span style={leadStyle}>Cal.com</span> &mdash; powers our
-            appointment scheduling widget.
+            <span style={leadStyle}>Scheduling service</span> &mdash;
+            powers our appointment scheduling widget.
           </li>
           <li style={pStyle}>
-            <span style={leadStyle}>Retell AI</span> &mdash; powers our
-            live voice demo, including real-time voice processing and any
-            recording/transcription of that demo call.
+            <span style={leadStyle}>Voice AI technology provider</span>{" "}
+            &mdash; powers our live voice demo, including real-time voice
+            processing and any recording/transcription of that demo call.
           </li>
           <li style={pStyle}>
-            <span style={leadStyle}>Vercel</span> &mdash; our website
-            hosting provider.
+            <span style={leadStyle}>Hosting provider</span> &mdash; our
+            website hosting provider.
           </li>
         </ul>
 
