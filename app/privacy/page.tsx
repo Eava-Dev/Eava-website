@@ -74,9 +74,7 @@ export default function PrivacyPolicyPage() {
         </p>
 
         <p style={pStyle}>
-          This is not a substitute for reviewing this policy with an
-          attorney before relying on it. We update this page as our
-          practices change.
+          We update this page as our practices change.
         </p>
 
         <h2 style={h2Style}>Information We Collect</h2>
