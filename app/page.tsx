@@ -1,5 +1,4 @@
-import ScrollHero from "./components/ScrollHero";
-import OnboardingCTA from "./components/OnboardingCTA";
+import StaticHeroHeader from "./components/StaticHeroHeader";
 import TalkToEavaWidget from "./components/TalkToEavaWidget";
 import FeaturesSection from "./components/FeaturesSection";
 import MarketingSection from "./components/MarketingSection";
@@ -15,8 +14,7 @@ export default function Home() {
         Eava &mdash; AI Voice Agent That Answers, Books, and Grows Your
         Business
       </h1>
-      <ScrollHero />
-      <OnboardingCTA />
+      <StaticHeroHeader />
       <MarketingSection />
       <HowItWorksSection />
       <TalkToEavaWidget />

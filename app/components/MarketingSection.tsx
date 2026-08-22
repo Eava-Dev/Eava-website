@@ -26,7 +26,7 @@ export default function MarketingSection() {
     <section
       style={{
         background: "#0A0B0D",
-        padding: "8rem 6vw",
+        padding: "3rem 6vw 8rem",
       }}
     >
       <FadeIn>
@@ -39,7 +39,9 @@ export default function MarketingSection() {
             maxWidth: "760px",
           }}
         >
-          More Than a Bot. An Employee Built For You.
+          More Than a Bot.
+          <br />
+          An Employee Built For You.
         </h2>
       </FadeIn>
 
@@ -53,13 +55,36 @@ export default function MarketingSection() {
             maxWidth: "600px",
             lineHeight: 1.6,
             marginTop: "1.25rem",
-            marginBottom: "4rem",
+            marginBottom: "8rem",
           }}
         >
           Every other AI answering service configures itself from your
           website in minutes. Eava is built by hand, for your business, a
           personal assistant tailored to you.
         </p>
+      </FadeIn>
+
+      <FadeIn index={1.5}>
+        <a
+          href="#hear-eava"
+          style={{
+            display: "inline-block",
+            width: "fit-content",
+            background: "#22D3EE",
+            color: "#0A0B0D",
+            fontFamily: "var(--font-inter)",
+            fontWeight: 500,
+            fontSize: "0.8rem",
+            letterSpacing: "0.18em",
+            textTransform: "uppercase",
+            padding: "1.05rem 3rem",
+            borderRadius: "2px",
+            textDecoration: "none",
+            marginBottom: "8rem",
+          }}
+        >
+          Hear Eava in Action
+        </a>
       </FadeIn>
 
       <div
