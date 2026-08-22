@@ -102,7 +102,7 @@ export default function StaticHeroHeader() {
           }}
         >
           <a
-            href="https://eava-portal.vercel.app"
+            href="https://portal.eavaai.com"
             target="_blank"
             rel="noopener noreferrer"
             style={{
