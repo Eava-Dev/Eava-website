@@ -5,13 +5,13 @@ import FadeIn from "./FadeIn";
 const stats = [
   {
     stat: "24/7",
-    title: "Never Clocks Out",
-    body: "Human receptionists work maybe 40 hours a week. Eava works nights, weekends, and holidays without ever calling in sick.",
+    title: "Always Answering",
+    body: "Every call gets picked up — nights, weekends, holidays — so no opportunity slips through.",
   },
   {
     stat: "$40,000+",
-    title: "Saved Every Year",
-    body: "Average salary and benefits cost of a full-time receptionist, replaced by an employee that never stops working.",
+    title: "Recovered Every Year",
+    body: "Average revenue businesses were losing to missed and after-hours calls, now captured instead.",
   },
   {
     stat: "20+ Hours",
