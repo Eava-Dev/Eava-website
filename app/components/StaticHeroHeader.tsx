@@ -32,11 +32,11 @@ export default function StaticHeroHeader() {
 
   return (
     <div
+      className="hero-header-row"
       style={{
         background: "#0A0B0D",
         display: "flex",
         flexDirection: "row",
-        flexWrap: "nowrap",
         justifyContent: "space-between",
         alignItems: "flex-start",
         gap: "clamp(1rem, 3vh, 2rem)",
