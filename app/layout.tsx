@@ -16,7 +16,10 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "VOICE AGENT · GROWTH AGENT",
+  metadataBase: new URL("https://eavaai.com"),
+  title: "VOICE AGENT · GROWTH AGENT · Eava",
+  description:
+    "Eava is an AI voice agent that answers every call, qualifies leads, and captures appointment requests around the clock — custom-built for your business.",
   openGraph: {
     title: "VOICE AGENT · GROWTH AGENT",
     images: ["/og-image.png"],

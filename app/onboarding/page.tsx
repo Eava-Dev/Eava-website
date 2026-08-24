@@ -3,6 +3,8 @@ import OnboardingForm from "../components/onboarding/OnboardingForm";
 
 export const metadata: Metadata = {
   title: "Client Onboarding · Eava",
+  description:
+    "Tell us about your business so we can build your custom AI voice agent — Eava's client onboarding form for new customers.",
 };
 
 export default function OnboardingPage() {
