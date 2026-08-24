@@ -98,7 +98,7 @@ export default function PackagesSection() {
           }}
         >
           Every plan includes a custom-built AI voice agent tailored to
-          your business, pricing depends on your call volume and needs.
+          your business. Pricing depends on your call volume and needs.
         </p>
       </FadeIn>
 

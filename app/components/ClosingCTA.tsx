@@ -41,7 +41,7 @@ export default function ClosingCTA() {
             lineHeight: 1.15,
           }}
         >
-          Your all around AI employee.
+          Your all-around AI employee.
           <br />
           <span style={{ fontStyle: "italic", color: "#E5E5E5" }}>
             Working while you live your life.
