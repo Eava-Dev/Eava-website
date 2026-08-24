@@ -5,7 +5,7 @@ import FadeIn from "./FadeIn";
 const features = [
   {
     title: "24/7 Call Answering",
-    copy: "Every call answered instantly, day or night, weekends and holidays included, so no lead ever goes to voicemail.",
+    copy: "Every call answered instantly, day or night, weekends and holidays included, so leads rarely hit voicemail.",
     icon: (
       <path d="M4 5c0 8.284 6.716 15 15 15v-3.5a1.5 1.5 0 0 0-1.2-1.47l-3.2-.64a1.5 1.5 0 0 0-1.55.66l-.9 1.35a11.5 11.5 0 0 1-5.55-5.55l1.35-.9a1.5 1.5 0 0 0 .66-1.55l-.64-3.2A1.5 1.5 0 0 0 6.5 4H4Z" />
     ),
@@ -86,7 +86,7 @@ export default function FeaturesSection() {
             color: "#22D3EE",
           }}
         >
-          Never Miss Another Call
+          Catch Nearly Every Call
         </span>
       </FadeIn>
       <FadeIn index={1}>
