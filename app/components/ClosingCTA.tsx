@@ -61,8 +61,9 @@ export default function ClosingCTA() {
             lineHeight: 1.6,
           }}
         >
-          See how Eava answers, qualifies, and books your calls before you
-          even pick up the phone. Fifteen minutes, no obligation.
+          See how Eava answers your calls, qualifies leads, and captures
+          appointment requests before you even pick up the phone. Fifteen
+          minutes, no obligation.
         </p>
       </FadeIn>
 

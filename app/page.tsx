@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <main style={{ background: "#0A0B0D" }}>
       <h1 className="sr-only">
-        Eava &mdash; AI Voice Agent That Answers, Books, and Grows Your
+        Eava &mdash; AI Voice Agent That Answers, Captures, and Grows Your
         Business
       </h1>
       <StaticHeroHeader />
