@@ -8,7 +8,7 @@ export default function StaticHeroHeader() {
 
   useEffect(() => {
     const src = new Image();
-    src.src = "/eava-logo.png";
+    src.src = "/LOGOV2.png";
     src.onload = () => {
       const off = document.createElement("canvas");
       off.width = src.naturalWidth;
