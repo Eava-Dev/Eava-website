@@ -1,7 +1,6 @@
 "use client";
 
 import FadeIn from "./FadeIn";
-import WelcomeVideoPlayer from "./WelcomeVideoPlayer";
 
 const blocks = [
   {
@@ -117,10 +116,6 @@ export default function MarketingSection() {
           </FadeIn>
         ))}
       </div>
-
-      <FadeIn index={5}>
-        <WelcomeVideoPlayer />
-      </FadeIn>
     </section>
   );
 }
