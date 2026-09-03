@@ -4,6 +4,7 @@ import MarketingSection from "./components/MarketingSection";
 import PackagesSection from "./components/PackagesSection";
 import MissedCallCostSection from "./components/MissedCallCostSection";
 import HowItWorksSection from "./components/HowItWorksSection";
+import CommonQuestionsSection from "./components/CommonQuestionsSection";
 import ClosingCTA from "./components/ClosingCTA";
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
       <FeaturesSection />
       <MissedCallCostSection />
       <PackagesSection />
+      <CommonQuestionsSection />
       <ClosingCTA />
     </main>
   );

@@ -46,3 +46,13 @@ body {
     flex-wrap: nowrap;
   }
 }
+
+.common-questions-grid {
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .common-questions-grid {
+    align-items: start;
+  }
+}
