@@ -1,5 +1,4 @@
 import StaticHeroHeader from "./components/StaticHeroHeader";
-import TalkToEavaWidget from "./components/TalkToEavaWidget";
 import FeaturesSection from "./components/FeaturesSection";
 import MarketingSection from "./components/MarketingSection";
 import PackagesSection from "./components/PackagesSection";
@@ -17,7 +16,6 @@ export default function Home() {
       <StaticHeroHeader />
       <MarketingSection />
       <HowItWorksSection />
-      <TalkToEavaWidget />
       <FeaturesSection />
       <MissedCallCostSection />
       <PackagesSection />
