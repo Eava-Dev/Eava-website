@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   title: "Privacy Policy · Eava",
   description:
     "How Eava collects, uses, and protects your information — from contact forms and demo bookings to the live voice demo and your data rights.",
+  robots: {
+    index: false,
+    follow: true,
+  },
 };
 
 const h2Style: CSSProperties = {
