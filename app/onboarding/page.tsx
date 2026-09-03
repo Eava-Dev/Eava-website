@@ -17,6 +17,20 @@ export default function OnboardingPage() {
           padding: "6rem 6vw 8rem",
         }}
       >
+        <a
+          href="/"
+          style={{
+            display: "inline-block",
+            fontFamily: "var(--font-inter)",
+            fontWeight: 300,
+            fontSize: "0.8rem",
+            color: "#888888",
+            textDecoration: "underline",
+            marginBottom: "2rem",
+          }}
+        >
+          &larr; Back to Home
+        </a>
         <h1
           style={{
             fontFamily: "var(--font-display)",
