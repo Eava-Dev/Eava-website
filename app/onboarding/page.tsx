@@ -1,63 +1,21 @@
 import type { Metadata } from "next";
+import Header from "../components/website/Header";
 import OnboardingForm from "../components/onboarding/OnboardingForm";
-
 export const metadata: Metadata = {
   title: "Client Onboarding · Eava",
-  description:
-    "Tell us about your business so we can build your custom AI voice agent — Eava's client onboarding form for new customers.",
+  description: "Explore how EAVA Voice Agent, Growth Agent, or both can help your business.",
 };
-
 export default function OnboardingPage() {
-  return (
-    <main style={{ background: "#0A0B0D", minHeight: "100vh" }}>
-      <div
-        style={{
-          maxWidth: "760px",
-          margin: "0 auto",
-          padding: "6rem 6vw 8rem",
-        }}
-      >
-        <a
-          href="/"
-          style={{
-            display: "inline-block",
-            fontFamily: "var(--font-inter)",
-            fontWeight: 300,
-            fontSize: "0.8rem",
-            color: "#888888",
-            textDecoration: "underline",
-            marginBottom: "2rem",
-          }}
-        >
-          &larr; Back to Home
-        </a>
-        <h1
-          style={{
-            fontFamily: "var(--font-display)",
-            fontWeight: 600,
-            fontSize: "clamp(2rem, 4vw, 3rem)",
-            color: "#ffffff",
-            marginBottom: "1rem",
-          }}
-        >
-          Client Onboarding
-        </h1>
-        <p
-          style={{
-            fontFamily: "var(--font-inter)",
-            fontWeight: 300,
-            fontSize: "1rem",
-            color: "#E5E5E5",
-            lineHeight: 1.6,
-            marginBottom: "3rem",
-          }}
-        >
-          Tell us about your business so we can build your AI voice agent
-          exactly the way you want it. The more detail you give us, the
-          better Eava will sound from day one.
-        </p>
-        <OnboardingForm />
-      </div>
+  return <div className="website-v2">
+    <Header />
+    <main id="main" className="onboarding-page">
+      <a href="/" className="text-link">← Back to Home</a>
+      <p className="eyebrow">YOUR NEXT CHAPTER STARTS HERE</p>
+      <h1>Let’s Build<br />
+        <em>What’s Next.</em>
+      </h1>
+      <p className="intro">Let’s understand your business and explore how Voice Agent, Growth Agent, or both can help. Share a few details, then choose a time to talk.</p>
+      <OnboardingForm />
     </main>
-  );
+  </div>;
 }

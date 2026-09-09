@@ -4,7 +4,7 @@ import type { CSSProperties } from "react";
 export const metadata: Metadata = {
   title: "Privacy Policy · Eava",
   description:
-    "How Eava collects, uses, and protects your information — from contact forms and demo bookings to the live voice demo and your data rights.",
+    "How Eava collects, uses, and protects your information — including demo requests, scheduling, and your data rights.",
   robots: {
     index: false,
     follow: true,
@@ -69,7 +69,7 @@ export default function PrivacyPolicyPage() {
             marginBottom: "2.5rem",
           }}
         >
-          Last updated: August 6, 2026
+          Last updated: September 8, 2026
         </p>
 
         <p style={pStyle}>
@@ -87,9 +87,8 @@ export default function PrivacyPolicyPage() {
 
         <p style={pStyle}>
           <span style={leadStyle}>Contact form.</span> If you fill out our
-          contact/demo request form, we collect your name, business name,
-          email address, phone number, industry, and any details you
-          provide about your current phone/call-handling situation.
+          demo request form, we collect your name, phone number, and email
+          address to respond to your inquiry and follow up about a demo.
         </p>
 
         <p style={pStyle}>
@@ -98,14 +97,6 @@ export default function PrivacyPolicyPage() {
           address, timezone, and the appointment details you select.
         </p>
 
-        <p style={pStyle}>
-          <span style={leadStyle}>Live voice demo.</span> If you choose to
-          start a live voice demo on this Site, your voice is processed in
-          real time, and the conversation may be recorded and transcribed
-          for demonstration and quality purposes. This only happens if you
-          actively click to start the demo &mdash; nothing is recorded
-          before that.
-        </p>
 
         <p style={pStyle}>
           <span style={leadStyle}>Standard technical information.</span>{" "}
@@ -142,11 +133,6 @@ export default function PrivacyPolicyPage() {
             powers our appointment scheduling widget.
           </li>
           <li style={pStyle}>
-            <span style={leadStyle}>Voice AI technology provider</span>{" "}
-            &mdash; powers our live voice demo, including real-time voice
-            processing and any recording/transcription of that demo call.
-          </li>
-          <li style={pStyle}>
             <span style={leadStyle}>Hosting provider</span> &mdash; our
             website hosting provider.
           </li>
@@ -154,18 +140,21 @@ export default function PrivacyPolicyPage() {
 
         <p style={pStyle}>We do not sell your personal information.</p>
 
-        <h2 style={h2Style}>Voice Data Notice</h2>
+        <h2 style={h2Style}>Cookies and Scheduling Preferences</h2>
 
         <p style={pStyle}>
-          Because our live demo processes and may record your voice,
-          please be aware that voice data can be considered sensitive or
-          biometric information under certain state laws. By choosing to
-          start the live voice demo, you consent to your voice being
-          processed and potentially recorded and transcribed by our voice
-          AI provider for the purpose of demonstrating our product. If you
-          do not wish for this to happen, simply do not start the live
-          voice demo &mdash; you can still explore the rest of the Site
-          and contact us through the form instead.
+          Our scheduling widget loads after you choose Continue in the
+          scheduling notice. The scheduling service may then set cookies
+          or process information needed to provide the widget. Submitting
+          the demo request form is separate from this choice and sends
+          your details to our form processing service.
+        </p>
+
+        <p style={pStyle}>
+          We store your scheduling consent preference in your browser’s
+          local storage when available. You can clear this preference by
+          clearing this Site’s stored data in your browser settings. The
+          next time you visit, we will ask again before loading the widget.
         </p>
 
         <h2 style={h2Style}>Your Choices</h2>
@@ -194,8 +183,6 @@ export default function PrivacyPolicyPage() {
           We retain contact form submissions and demo booking information
           for as long as reasonably necessary to respond to your inquiry
           and operate our business, unless you request deletion sooner.
-          Voice demo recordings/transcripts are retained according to our
-          voice AI provider&rsquo;s standard retention practices.
         </p>
 
         <h2 style={h2Style}>Children&rsquo;s Privacy</h2>

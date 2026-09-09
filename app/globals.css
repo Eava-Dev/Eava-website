@@ -56,3 +56,7 @@ body {
     align-items: start;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

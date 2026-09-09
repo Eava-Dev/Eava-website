@@ -1,291 +1,62 @@
 "use client";
-
-import { useEffect, useState, type FormEvent } from "react";
-import { motion } from "framer-motion";
-import { getCalApi } from "@calcom/embed-react";
-import { FormSection, TextField, SelectField } from "./fields";
-import { buildEmailFields, type OnboardingPayload } from "./emailFields";
+import { useRef, useState, type FormEvent } from "react";
+import { type OnboardingPayload } from "./emailFields";
+import { submitLead } from "./submitLead";
 import CalEmbed from "./CalEmbed";
 import ConsentNotice from "../ConsentNotice";
 import { useThirdPartyConsent } from "../../hooks/useThirdPartyConsent";
-
-const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
-const RECIPIENT_EMAIL = "Contact@eavaai.com";
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-const initialFormData: OnboardingPayload = {
-  name: "",
-  business: "",
-  email: "",
-  phone: "",
-  industry: "",
-  phoneProblem: "",
-};
-
-type SubmitStatus = "idle" | "submitting" | "sent" | "error";
-
-function isRequiredFilled(data: OnboardingPayload): boolean {
-  return (
-    data.name.trim() !== "" &&
-    data.business.trim() !== "" &&
-    EMAIL_PATTERN.test(data.email.trim()) &&
-    data.phone.trim() !== "" &&
-    data.industry.trim() !== ""
-  );
-}
-
 export default function OnboardingForm() {
-  const [formData, setFormData] = useState<OnboardingPayload>(initialFormData);
-  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
-  const [hasUnlocked, setHasUnlocked] = useState(false);
+  const [data, setData] = useState<OnboardingPayload>({ name: "", phone: "", email: "" });
+  const [status, setStatus] = useState<"idle" | "submitting" | "sent" | "error">("idle");
+  const [unlocked, setUnlocked] = useState(false);
+  const pending = useRef(false);
   const { hasConsented, grantConsent } = useThirdPartyConsent();
-
-  const updateField = <K extends keyof OnboardingPayload>(
-    key: K,
-    value: OnboardingPayload[K]
-  ) => {
-    setFormData((prev) => ({ ...prev, [key]: value }));
-  };
-
-  useEffect(() => {
-    if (!hasConsented) return;
-
-    let cancelled = false;
-    (async () => {
-      const cal = await getCalApi();
-      if (cancelled) return;
-      cal("ui", {
-        theme: "dark",
-        styles: { branding: { brandColor: "#22d3ee" } },
-      });
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, [hasConsented]);
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-
-    if (!isRequiredFilled(formData)) {
-      setSubmitStatus("error");
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if(pending.current)
       return;
-    }
-
-    setSubmitStatus("submitting");
-
-    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
-    if (!accessKey) {
-      setSubmitStatus("error");
-      return;
-    }
-
-    const fields = buildEmailFields(formData);
-
+    pending.current = true;
+    setStatus("submitting");
     try {
-      const res = await fetch(WEB3FORMS_ENDPOINT, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          access_key: accessKey,
-          subject: `New Onboarding Submission${
-            formData.business ? `: ${formData.business}` : ""
-          }`,
-          from_name: "Eava Onboarding Form",
-          email: RECIPIENT_EMAIL,
-          ...fields,
-        }),
-      });
-
-      const rawBody = await res.text();
-      let data: { success?: boolean } = {};
-      try {
-        data = JSON.parse(rawBody);
-      } catch {
-        data = {};
+      const result = await submitLead(data, process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY);
+      if(result.success) {
+        setStatus("sent");
+        setUnlocked(true);
       }
-
-      if (res.ok && data.success) {
-        setSubmitStatus("sent");
-        setHasUnlocked(true);
-      } else {
-        setSubmitStatus("error");
-      }
-    } catch {
-      setSubmitStatus("error");
+      else
+        setStatus("error");
     }
-  };
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <FormSection title="Your Details">
-        <TextField
-          label="Name"
-          name="name"
-          required
-          value={formData.name}
-          onChange={(e) => updateField("name", e.target.value)}
-        />
-        <TextField
-          label="Business"
-          name="business"
-          required
-          value={formData.business}
-          onChange={(e) => updateField("business", e.target.value)}
-        />
-        <TextField
-          label="Email"
-          name="email"
-          type="email"
-          required
-          value={formData.email}
-          onChange={(e) => updateField("email", e.target.value)}
-        />
-        <TextField
-          label="Phone"
-          name="phone"
-          type="tel"
-          required
-          value={formData.phone}
-          onChange={(e) => updateField("phone", e.target.value)}
-        />
-        <SelectField
-          label="Industry"
-          name="industry"
-          required
-          value={formData.industry}
-          onChange={(v) => updateField("industry", v)}
-          options={["HVAC", "Plumbing", "Electrical", "Other"]}
-        />
-        <TextField
-          label="Current phone problem"
-          name="phoneProblem"
-          placeholder="What's frustrating about how your phones are handled now?"
-          value={formData.phoneProblem}
-          onChange={(e) => updateField("phoneProblem", e.target.value)}
-        />
-      </FormSection>
-
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "1rem",
-          marginBottom: "2.5rem",
-        }}
-      >
-        <motion.button
-          type="submit"
-          disabled={submitStatus === "submitting"}
-          whileHover={
-            submitStatus === "submitting"
-              ? undefined
-              : { background: "#0A0B0D", color: "#22D3EE" }
-          }
-          style={{
-            display: "inline-block",
-            width: "fit-content",
-            background: "#22D3EE",
-            color: "#0A0B0D",
-            border: "1px solid #22D3EE",
-            fontFamily: "var(--font-inter)",
-            fontWeight: 500,
-            fontSize: "0.8rem",
-            letterSpacing: "0.18em",
-            textTransform: "uppercase",
-            padding: "1rem 3rem",
-            borderRadius: "2px",
-            cursor: submitStatus === "submitting" ? "default" : "pointer",
-            opacity: submitStatus === "submitting" ? 0.6 : 1,
-          }}
-        >
-          {submitStatus === "submitting" ? "Submitting…" : "Submit"}
-        </motion.button>
-
-        {submitStatus === "sent" && (
-          <p
-            style={{
-              fontFamily: "var(--font-inter)",
-              fontWeight: 300,
-              fontSize: "0.9rem",
-              color: "#22D3EE",
-              textAlign: "center",
-            }}
-          >
-            Got it, now pick a time below.
-          </p>
-        )}
-
-        {submitStatus === "error" && (
-          <p
-            style={{
-              fontFamily: "var(--font-inter)",
-              fontWeight: 300,
-              fontSize: "0.8rem",
-              color: "#ff6b6b",
-              textAlign: "center",
-            }}
-          >
-            Something went wrong submitting your details. Please try again.
-          </p>
-        )}
-      </div>
-
-      <div>
-        <p
-          style={{
-            fontFamily: "var(--font-inter)",
-            fontWeight: 300,
-            fontSize: "0.95rem",
-            color: "#E5E5E5",
-            textAlign: "center",
-            marginBottom: "1.25rem",
-          }}
-        >
-          Pick a time that works for you to book your demo.
-        </p>
-
-        {hasConsented ? (
-          <div style={{ position: "relative" }}>
-            <div inert={!hasUnlocked}>
-              <CalEmbed />
-            </div>
-            {!hasUnlocked && (
-              <div
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  background: "rgba(10,11,13,0.85)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  textAlign: "center",
-                  padding: "2rem",
-                }}
-                role="status"
-              >
-                <p
-                  style={{
-                    fontFamily: "var(--font-inter)",
-                    fontWeight: 300,
-                    fontSize: "0.9rem",
-                    color: "#888888",
-                    maxWidth: "320px",
-                  }}
-                >
-                  Submit your details above to unlock scheduling.
-                </p>
-              </div>
-            )}
-          </div>
-        ) : (
-          <ConsentNotice onContinue={grantConsent} />
-        )}
+    finally {
+      pending.current = false;
+    }
+  }
+  return <>
+    <form onSubmit={handleSubmit} className="lead-form" aria-label="Demo request" aria-busy={status === "submitting"}>
+      <label htmlFor="lead-name">Name<input id="lead-name" name="name" autoComplete="name" required value={data.name} onChange={e => setData({ ...data, name: e.target.value })} placeholder="Your name" />
+      </label>
+      <label htmlFor="lead-phone">Phone Number<input id="lead-phone" name="phone" type="tel" autoComplete="tel" required value={data.phone} onChange={e => setData({ ...data, phone: e.target.value })} placeholder="Your phone number" />
+      </label>
+      <label htmlFor="lead-email">Email<input id="lead-email" name="email" type="email" autoComplete="email" required value={data.email} onChange={e => setData({ ...data, email: e.target.value })} placeholder="you@yourbusiness.com" />
+      </label>
+      <p className="form-note">We’ll use your details to follow up on your demo request. Read our <a href="/privacy">Privacy Policy</a>.</p>
+      <button className="button" type="submit" disabled={status === "submitting"}>{status === "submitting" ? "Submitting…" : "Continue to scheduling"}
+        <span aria-hidden="true">↗</span>
+      </button>
+      <div role="status" aria-live="polite" aria-atomic="true">
+        {status === "sent" && <p className="form-success">Got it, now pick a time below.</p>}
+        {status === "error" && <p className="form-error">Something went wrong submitting your details. Please try again, or contact <a href="mailto:hello@eavaai.com">hello@eavaai.com</a>.</p>}
       </div>
     </form>
-  );
+    <section className="scheduling" aria-labelledby="scheduling-heading">
+      <p className="eyebrow">NEXT / A CONVERSATION</p>
+      <h2 id="scheduling-heading">Find a time to meet.</h2>
+      <p>Pick a time that works for you to book your demo.</p>
+      {hasConsented ? <div className="calendar-shell">
+        <div inert={!unlocked} aria-hidden={!unlocked}>
+          <CalEmbed />
+        </div>
+        {!unlocked && <div className="calendar-lock" role="status">Submit your details above to unlock scheduling.</div>}
+      </div> : <ConsentNotice onContinue={grantConsent} />}
+    </section>
+  </>;
 }
