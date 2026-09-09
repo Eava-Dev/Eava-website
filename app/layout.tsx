@@ -18,17 +18,19 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://eavaai.com"),
-  title: "VOICE AGENT · GROWTH AGENT · Eava",
+  title: "EAVA",
   description:
-    "Eava is an AI voice agent that answers every call, qualifies leads, and captures appointment requests around the clock — custom-built for your business.",
+    "Voice Agent · Growth Agent",
   openGraph: {
-    title: "VOICE AGENT · GROWTH AGENT",
-    images: ["/og-eava-brand.png"],
+    title: "EAVA",
+    description: "Voice Agent · Growth Agent",
+    images: [{ url: "/og-eava-ivory.png", width: 1200, height: 630, alt: "eava. — Voice Agent · Growth Agent — eavaai.com" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "VOICE AGENT · GROWTH AGENT",
-    images: ["/og-eava-brand.png"],
+    title: "EAVA",
+    description: "Voice Agent · Growth Agent",
+    images: [{ url: "/og-eava-ivory.png", alt: "eava. — Voice Agent · Growth Agent — eavaai.com" }],
   },
 };
 
