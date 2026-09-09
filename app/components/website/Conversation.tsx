@@ -1,4 +1,6 @@
 "use client";
+import ArrowIcon from "./ArrowIcon";
+
 import { type CSSProperties, useState } from "react";
 const scenarios = [
   {
@@ -57,24 +59,24 @@ export default function Conversation() {
           else
             return; e.preventDefault(); setActive(next); document.getElementById(`tab-${next}`)?.focus();
         }}>{label}
-          <span aria-hidden="true">↗</span>
+          <span aria-hidden="true"><ArrowIcon /></span>
         </button>)}</div>
         <p className="caption">{"An example of the experience, not a customer call or a live product dashboard."}</p>
       </div>
       <div className="call-panel" id="call-panel" role="tabpanel" aria-labelledby={`tab-${active}`} tabIndex={0}>
         <div className="panel-head">
-          <span className="agent-avatar" aria-hidden="true">↙</span>
+          <span className="agent-avatar" aria-hidden="true"><ArrowIcon direction="down-left" /></span>
           <div><strong>Inbound call / {labels[active]}</strong><small>EAVA VOICE AGENT · SAMPLE CALL RECORD</small></div>
           <span className="sample">ILLUSTRATIVE</span>
         </div>
         <div className="call-audio" aria-hidden="true">
-          <div className="audio-label"><span>VOICE / CONVERSATION EXCERPT</span><span>↙ CALLER · EAVA ↗</span></div>
+          <div className="audio-label"><span>VOICE / CONVERSATION EXCERPT</span><span><ArrowIcon direction="down-left" /> CALLER · EAVA <ArrowIcon /></span></div>
           <div className="audio-wave">{Array.from({length:48},(_,i)=><i key={i} style={{"--bar":`${8 + Math.abs(Math.sin(i * 1.9 + active) * Math.cos(i * .31)) * 36}px`} as CSSProperties} />)}</div>
           <div className="audio-label"><span>CONCEPTUAL WAVEFORM</span><span>NO AUDIO PLAYBACK</span></div>
         </div>
         <div className="conversation transcript" aria-live="polite">
           <p className="transcript-label">CALL TRANSCRIPT <span>EXCERPT</span></p>
-          <div className="transcript-turn"><span className="turn-marker" aria-hidden="true">↙</span><div><p className="speaker">CALLER</p><p id="caller">{scenario.caller}</p></div></div>
+          <div className="transcript-turn"><span className="turn-marker" aria-hidden="true"><ArrowIcon direction="down-left" /></span><div><p className="speaker">CALLER</p><p id="caller">{scenario.caller}</p></div></div>
           <div className="transcript-turn"><span className="turn-marker eava-turn" aria-hidden="true">E</span><div><p className="speaker">EAVA / VOICE AGENT</p><p id="answer">{scenario.answer}</p></div></div>
         </div>
         {active === 1 && <div className="booking-steps" aria-live="polite">
@@ -87,7 +89,7 @@ export default function Conversation() {
         </div>}
         <div className="outcome">
           <div className="outcome-title">
-            <span>{"↳"}</span>
+            <span><ArrowIcon direction="turn-right" /></span>
             <span>{"CALL SUMMARY / CAPTURED OUTCOME"}</span>
           </div>
           <div className="outcome-row">

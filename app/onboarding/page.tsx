@@ -1,3 +1,4 @@
+import ArrowIcon from "../components/website/ArrowIcon";
 import type { Metadata } from "next";
 import Header from "../components/website/Header";
 import OnboardingForm from "../components/onboarding/OnboardingForm";
@@ -9,7 +10,7 @@ export default function OnboardingPage() {
   return <div className="website-v2">
     <Header />
     <main id="main" className="onboarding-page">
-      <a href="/" className="text-link">← Back to Home</a>
+      <a href="/" className="text-link"><ArrowIcon direction="left" /> Back to Home</a>
       <p className="eyebrow">YOUR NEXT CHAPTER STARTS HERE</p>
       <h1>Let’s Build<br />
         <em>What’s Next.</em>

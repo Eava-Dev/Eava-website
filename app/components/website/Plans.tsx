@@ -1,3 +1,4 @@
+import ArrowIcon from "./ArrowIcon";
 export default function Plans() {
   return (<section className="plans section" id="plans">
     <div className="plan-title reveal">
@@ -26,7 +27,7 @@ export default function Plans() {
         <li>{"Dedicated onboarding & support"}</li>
       </ul>
       <a className="button outline" href="/onboarding">{"Explore Essential "}
-        <span>{"↗"}</span>
+        <span><ArrowIcon /></span>
       </a>
     </article>
     <article className="plan pro reveal">
@@ -44,7 +45,7 @@ export default function Plans() {
         <li>{"Priority support & faster response"}</li>
       </ul>
       <a className="button" href="/onboarding">{"Explore Pro "}
-        <span>{"↗"}</span>
+        <span><ArrowIcon /></span>
       </a>
     </article>
     <article className="growth-offering reveal">
@@ -55,7 +56,7 @@ export default function Plans() {
       <div className="growth-offering-copy">
         <p>Build around your business. Work with EAVA to identify opportunities and develop AI automations, sales systems, and specialized agents around your priorities.</p>
         <p>Scope and pricing are agreed for your project. Growth Agent work is separate from Essential and EAVA Pro.</p>
-        <a className="button" href="/onboarding">Build With EAVA <span>↗</span></a>
+        <a className="button" href="/onboarding">Build With EAVA <span><ArrowIcon /></span></a>
       </div>
     </article>
   </section>);

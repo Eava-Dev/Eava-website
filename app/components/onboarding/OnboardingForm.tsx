@@ -1,4 +1,6 @@
 "use client";
+import ArrowIcon from "../website/ArrowIcon";
+
 import { useRef, useState, type FormEvent } from "react";
 import { type OnboardingPayload } from "./emailFields";
 import { submitLead } from "./submitLead";
@@ -40,7 +42,7 @@ export default function OnboardingForm() {
       </label>
       <p className="form-note">We’ll use your details to follow up on your demo request. Read our <a href="/privacy">Privacy Policy</a>.</p>
       <button className="button" type="submit" disabled={status === "submitting"}>{status === "submitting" ? "Submitting…" : "Continue to scheduling"}
-        <span aria-hidden="true">↗</span>
+        <span aria-hidden="true"><ArrowIcon /></span>
       </button>
       <div role="status" aria-live="polite" aria-atomic="true">
         {status === "sent" && <p className="form-success">Got it, now pick a time below.</p>}

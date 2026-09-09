@@ -1647,3 +1647,5 @@
  .website-v2 .growth-offering { grid-template-columns:1fr; gap:24px; padding:26px 20px; }
  .website-v2 .growth-offering-copy p { font-size:13px; }
 }
+
+.website-v2 .arrow-icon { display:inline-block; flex-shrink:0; vertical-align:-.125em; }

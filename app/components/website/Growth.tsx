@@ -1,3 +1,4 @@
+import ArrowIcon from "./ArrowIcon";
 export default function Growth() {
   return (<section className="growth section" id="growth">
     <div className="section-top reveal">
@@ -9,7 +10,7 @@ export default function Growth() {
       <div className="statement-copy">
         <p>Start with your business: how you sell, how your team works, and where manual effort holds you back. We help identify the opportunities, shape a strategy, and build the AI systems to act on it.</p>
         <p>From stronger sales processes to smoother operations, Growth Agent combines business insight with hands-on implementation. Built around your goals, whether or not you use EAVA for calls.</p>
-        <a className="text-link" href="/onboarding">Build with EAVA <span>↗</span></a>
+        <a className="text-link" href="/onboarding">Build with EAVA <span><ArrowIcon /></span></a>
       </div>
     </div>
     <div className="principles growth-areas">

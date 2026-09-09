@@ -1,3 +1,4 @@
+import ArrowIcon from "./ArrowIcon";
 export default function Process() {
   return (<section className="process section" id="process">
     <div className="section-top reveal">
@@ -8,7 +9,7 @@ export default function Process() {
       <h2>{"We do the setup."}
         <br />{"You get your time back."}</h2>
       <a className="button" href="/onboarding">{"Let’s talk about your business "}
-        <span>{"↗"}</span>
+        <span><ArrowIcon /></span>
       </a>
     </div>
     <div className="steps">

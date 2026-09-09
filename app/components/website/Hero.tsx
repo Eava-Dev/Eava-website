@@ -1,3 +1,4 @@
+import ArrowIcon from "./ArrowIcon";
 import type { CSSProperties } from "react";
 export default function Hero() {
   return (<section className="hero">
@@ -12,10 +13,10 @@ export default function Hero() {
       <p className="intro">{"Your AI employee for customer conversations. Your growth partner for the systems behind a smarter business. EAVA helps you do both."}</p>
       <div className="actions">
         <a className="button" href="/onboarding">{"Find your EAVA "}
-          <span>{"↗"}</span>
+          <span><ArrowIcon /></span>
         </a>
         <a className="text-link" href="/#experience">{"See a call unfold "}
-          <span>{"↓"}</span>
+          <span><ArrowIcon direction="down" /></span>
         </a>
       </div>
 
@@ -30,7 +31,7 @@ export default function Hero() {
       </div>
       <div className="intelligence-roles">
         <div><span className="role-symbol" aria-hidden="true">◉</span><div><small>VOICE AGENT</small><strong>Handle the conversation.</strong><p>Questions. Leads. Next steps.</p></div></div>
-        <div><span className="role-symbol" aria-hidden="true">↗</span><div><small>GROWTH AGENT</small><strong>Build what moves you forward.</strong><p>Strategy. Agents. Automation.</p></div></div>
+        <div><span className="role-symbol" aria-hidden="true"><ArrowIcon /></span><div><small>GROWTH AGENT</small><strong>Build what moves you forward.</strong><p>Strategy. Agents. Automation.</p></div></div>
       </div>
       <div className="scene-bottom">
         <span>
