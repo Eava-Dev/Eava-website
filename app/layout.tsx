@@ -23,12 +23,12 @@ export const metadata: Metadata = {
     "Eava is an AI voice agent that answers every call, qualifies leads, and captures appointment requests around the clock — custom-built for your business.",
   openGraph: {
     title: "VOICE AGENT · GROWTH AGENT",
-    images: ["/og-image.png"],
+    images: ["/og-eava-brand.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: "VOICE AGENT · GROWTH AGENT",
-    images: ["/og-image.png"],
+    images: ["/og-eava-brand.png"],
   },
 };
 

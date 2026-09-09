@@ -1,10 +1,11 @@
+import Brand from "./Brand";
 import ArrowIcon from "./ArrowIcon";
 export default function Header() {
   return (<>
     <a className="skip" href="#main">Skip to content</a>
     <header>
       <a href="/#" className="logo" aria-label="EAVA home">
-        <img src="/LOGOV2.png" alt="EAVA" />
+        <Brand />
       </a>
       <nav aria-label="Main navigation">
         <a href="/#experience">{"Voice Agent"}</a>

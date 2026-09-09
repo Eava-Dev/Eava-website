@@ -1649,3 +1649,11 @@
 }
 
 .website-v2 .arrow-icon { display:inline-block; flex-shrink:0; vertical-align:-.125em; }
+
+/* Company-wide Portal 2.0 wordmark, black for the website’s light surfaces. */
+.website-v2 .logo { display:flex; align-items:center; overflow:visible; mix-blend-mode:normal; }
+.website-v2 .logo:before { content:none; }
+.website-v2 .eava-wordmark { display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:37px; font-weight:650; letter-spacing:-3px; line-height:1; color:#000; }
+@media(max-width:700px) { .website-v2 .eava-wordmark { font-size:32px; letter-spacing:-2.6px; } }
+
+.website-v2 .eava-turn { font-family:Arial,Helvetica,sans-serif; }

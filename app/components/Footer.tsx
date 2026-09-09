@@ -1,9 +1,10 @@
+import Brand from "./website/Brand";
 import ArrowIcon from "./website/ArrowIcon";
 export default function Footer() {
   return <div className="website-v2">
     <footer>
       <a href="/" className="logo" aria-label="EAVA home">
-        <img src="/LOGOV2.png" alt="EAVA" />
+        <Brand />
       </a>
       <span>VOICE AGENT. GROWTH AGENT.</span>
       <span>© 2026 EAVA AI</span>

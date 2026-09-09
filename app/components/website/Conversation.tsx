@@ -77,7 +77,7 @@ export default function Conversation() {
         <div className="conversation transcript" aria-live="polite">
           <p className="transcript-label">CALL TRANSCRIPT <span>EXCERPT</span></p>
           <div className="transcript-turn"><span className="turn-marker" aria-hidden="true"><ArrowIcon direction="down-left" /></span><div><p className="speaker">CALLER</p><p id="caller">{scenario.caller}</p></div></div>
-          <div className="transcript-turn"><span className="turn-marker eava-turn" aria-hidden="true">E</span><div><p className="speaker">EAVA / VOICE AGENT</p><p id="answer">{scenario.answer}</p></div></div>
+          <div className="transcript-turn"><span className="turn-marker eava-turn" aria-hidden="true">e</span><div><p className="speaker">EAVA / VOICE AGENT</p><p id="answer">{scenario.answer}</p></div></div>
         </div>
         {active === 1 && <div className="booking-steps" aria-live="polite">
           <p className="transcript-label">ILLUSTRATIVE BOOKING FLOW</p>
