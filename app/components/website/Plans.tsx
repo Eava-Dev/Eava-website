@@ -1,63 +1,74 @@
 import ArrowIcon from "./ArrowIcon";
+
+const essentialFeatures = [
+  "24/7 AI receptionist answering your inbound calls",
+  "Trained on your business, services, hours, and FAQs",
+  "Lead qualification, contact capture, and appointment requests",
+  "Emergency detection, real-time alerts, and missed-call text-back",
+  "Call recordings, transcripts, and summaries",
+  "EAVA Portal access and weekly reporting",
+  "Works with your existing business number",
+  "Dedicated onboarding and support",
+];
+const proFeatures = [
+  "Outbound speed-to-lead AI agent with immediate response to new leads",
+  "Outbound lead qualification and direct calendar booking",
+  "SMS Agent and automated lead follow-up",
+  "Appointment reminders",
+  "Higher included usage",
+  "Weekly business digest and priority support",
+];
+
 export default function Plans() {
-  return (<section className="plans section" id="plans">
+  return <section className="plans section pricing-refresh" id="plans">
     <div className="plan-title reveal">
-      <p className="eyebrow">{"05 / EAVA PLANS"}</p>
-      <h2>{"The right support."}
-        <br />{"At your stage."}</h2>
-      <p>{"Voice Agent plans. Custom Growth Agent solutions."}
-        <br />{"Two distinct ways to work with EAVA."}</p>
-      <p className="voice-pricing-note">Voice Agent pricing is shaped around your call volume and needs.</p>
+      <p className="eyebrow">05 / EAVA PLANS</p>
+      <h2>More Revenue.<br /> <em>More Time.</em></h2>
+      <p>EAVA answers. EAVA follows up. EAVA automates.</p>
     </div>
-    <article className="plan reveal">
-      <span className="eyebrow">{"VOICE AGENT / THE FOUNDATION"}</span>
-      <h3>{"Essential"}</h3>
-      <p>{"A dependable first point of contact."}</p>
-      <ul>
-        <li>{"24/7 AI receptionist"}</li>
-        <li>{"Answers every inbound call"}</li>
-        <li>{"Qualifies new leads"}</li>
-        <li>{"Captures appointment requests"}</li>
-        <li>{"Emergency call detection"}</li>
-        <li>{"Real-time emergency email alerts to you"}</li>
-        <li>{"Full call recordings & transcripts"}</li>
-        <li>{"Live lead & contact pipeline"}</li>
-        <li>{"Weekly reporting dashboard"}</li>
-        <li>{"Works with your existing number"}</li>
-        <li>{"Dedicated onboarding & support"}</li>
-      </ul>
-      <a className="button outline" href="/onboarding">{"Explore Essential "}
-        <span><ArrowIcon /></span>
-      </a>
-    </article>
-    <article className="plan pro reveal">
-      <span className="eyebrow">{"VOICE AGENT / THE NEXT CHAPTER"}</span>
-      <h3>{"EAVA Pro"}</h3>
-      <p>{"Keep the conversation moving forward."}</p>
-      <ul>
-        <li>{"Everything in Essential, plus:"}</li>
-        <li>{"Missed-call recovery, automatic AI callback within minutes of any missed, unanswered, or dropped call"}</li>
-        <li>{"Weekly business digest, a Sunday evening summary of calls, leads, and appointments before your week starts"}</li>
-        <li>{"Returning caller recognition, Eava knows your repeat customers and greets them accordingly"}</li>
-        <li>{"Automated appointment reminders, customers get a reminder the day before, cutting down no-shows"}</li>
-        <li>{"Automated lead follow-up, anyone who calls but doesn't book gets a friendly follow-up so the lead doesn't go cold"}</li>
-        <li>{"Higher call volume included"}</li>
-        <li>{"Priority support & faster response"}</li>
-      </ul>
-      <a className="button" href="/onboarding">{"Explore Pro "}
-        <span><ArrowIcon /></span>
-      </a>
-    </article>
+    <div className="voice-plan-grid">
+      <article className="plan reveal">
+        <div className="plan-label-row"><p className="eyebrow">INBOUND / ESSENTIAL</p></div>
+        <h3>Essential</h3>
+        <p className="plan-promise">EAVA Answers.</p>
+        <div className="plan-price">$599<span>/month</span></div>
+        <p className="plan-setup">$497 one-time setup</p>
+        <p>EAVA handles your inbound calls so you don’t have to.</p>
+        <p className="feature-label">Your inbound AI employee</p>
+        <ul>{essentialFeatures.map(feature => <li key={feature}>{feature}</li>)}</ul>
+        <a className="button outline" href="/onboarding">Explore Essential <span><ArrowIcon /></span></a>
+      </article>
+      <article className="plan pro reveal">
+        <div className="plan-label-row"><p className="eyebrow">INBOUND + OUTBOUND</p><span className="recommended">RECOMMENDED</span></div>
+        <h3>EAVA Pro</h3>
+        <p className="plan-promise">EAVA Answers + Follows Up.</p>
+        <div className="plan-price">$999<span>/month</span></div>
+        <p className="plan-setup">$997 one-time setup</p>
+        <p>EAVA answers your business and works your leads. Built for businesses generating leads through ads, their website, and beyond.</p>
+        <ol className="lead-workflow" aria-label="Pro lead workflow">{["New lead", "EAVA responds", "Qualifies", "Follows up", "Books"].map((step,i)=><li key={step}>{i > 0 && <span aria-hidden="true">/</span>}{step}</li>)}</ol>
+        <p className="feature-label">Everything in Essential, plus</p>
+        <ul>{proFeatures.map(feature => <li key={feature}>{feature}</li>)}</ul>
+        <a className="button" href="/onboarding">Explore EAVA Pro <span><ArrowIcon /></span></a>
+      </article>
+    </div>
     <article className="growth-offering reveal">
       <div>
-        <p className="eyebrow">GROWTH AGENT / CUSTOM SCOPE</p>
-        <h3>Custom Strategy<br /><em>+ Implementation.</em></h3>
+        <p className="eyebrow">EAVA GROWTH / CUSTOM SERVICE</p>
+        <h3>EAVA Automates.</h3>
+        <p className="growth-intro">We find the repetitive work inside your business and build EAVA to handle it.</p>
+        <p className="growth-detail">Start with an EAVA Growth Audit. We analyze your business, identify the highest-value automation opportunities, then scope the right Growth Agent for you.</p>
+        <p className="growth-detail">From lead or estimate follow-up to rebooking, e-commerce, and internal operations. One custom scope, built around what your business needs.</p>
+        <a className="button" href="/onboarding">Discuss Your Growth Audit <span><ArrowIcon /></span></a>
       </div>
       <div className="growth-offering-copy">
-        <p>Build around your business. Work with EAVA to identify opportunities and develop AI automations, sales systems, and specialized agents around your priorities.</p>
-        <p>Scope and pricing are agreed for your project. Growth Agent work is separate from Essential and EAVA Pro.</p>
-        <a className="button" href="/onboarding">Build With EAVA <span><ArrowIcon /></span></a>
+        <dl className="growth-prices">
+          <div><dt>EAVA Growth Audit</dt><dd>$750 <span>one-time</span></dd></div>
+          <div><dt>Custom Growth Agent builds</dt><dd><span>Starting at</span> $1,500</dd></div>
+          <div><dt>Ongoing Growth Agent management</dt><dd><span>Starting at</span> $250<span>/month</span></dd></div>
+        </dl>
+        <p className="audit-credit">Move forward with an approved Growth Agent build within 30 days and the $750 Growth Audit can be credited toward your build.</p>
+        <p>Custom strategy and implementation, scoped separately from Essential and EAVA Pro.</p>
       </div>
     </article>
-  </section>);
+  </section>;
 }
